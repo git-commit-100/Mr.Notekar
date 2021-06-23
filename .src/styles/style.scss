@@ -1,0 +1,25 @@
+html {
+  $enable-negative-margins: true;
+}
+
+nav {
+  height: 4rem;
+  button.btn.btn-outline-primary {
+    color: black;
+    border: none;
+  }
+  #logo {
+    cursor: pointer;
+  }
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    width: 100%;
+}
+
+.btn.btn-primary.mx-5 {
+    margin-left: 15rem !important;
+}
