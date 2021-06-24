@@ -1,5 +1,6 @@
 html {
   $enable-negative-margins: true;
+//   overflow-x: hidden;
 }
 
 nav {
@@ -13,13 +14,5 @@ nav {
   }
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    width: 100%;
-}
 
-.btn.btn-primary.mx-5 {
-    margin-left: 15rem !important;
-}
+
