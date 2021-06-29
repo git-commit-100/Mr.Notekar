@@ -1,18 +1,29 @@
+
 html {
   $enable-negative-margins: true;
-//   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;      //to hide scrollbars
+  }
 }
 
 nav {
   height: 4rem;
-  button.btn.btn-outline-primary {
-    color: black;
-    border: none;
-  }
   #logo {
     cursor: pointer;
   }
 }
 
+#submitNote:active {
+  transform: scale(1.05);
+}
+
+.displayEmpty {
+  // height: 100px;
+  // width: 100%;
+  // border: 1px solid red;
+  text-align: center;
+  padding-top: 2rem;
+  color: gray;
+}
 
 

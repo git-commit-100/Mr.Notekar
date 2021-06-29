@@ -43,7 +43,7 @@
         <form class="d-flex me-4">
           <input class="form-control me-2" type="search" placeholder="Search Your Notes" 
           aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit"><i class="far fa-search"></i></button>
+          <button class="btn btn-light btn-outline-primary" type="submit"><i class="far fa-search"></i></button>
         </form>
       </div>
     </nav>
@@ -54,25 +54,19 @@
     <form class="p-3 my-3">
       <div class="mb-3">
         <label for="noteTitle" class="form-label"><h3>Note Title</h3></label>
-        <input type="text" class="form-control" id="noteTitle" placeholder="Input Your Note Title Here">
-        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div> -->
+        <input type="text" class="form-control" id="noteTitle" autocomplete="off" placeholder="Input Your Note Title Here">
       <div class="my-4">
         <h3>Note Content</h3>
         <textarea class="form-control" placeholder="Input Your Note Content Here" id="noteTxtArea"
          style="height: 10rem"></textarea>
       </div>
-      <button id="submitNote" class="btn btn-outline-success" style="width: 12rem;">Take A Note&nbsp;
-        <i class="far fa-file-signature"></i></button>
+      <a id="submitNote" class="btn btn-outline-success" style="width: 12rem;" onclick="takeNote()">Take A Note&nbsp;
+        <i class="far fa-file-signature"></i></a>
     </form>
   </div>
 
-    <!-- <hr class="full-width"> -->
-
-  <div class="container" id="displayNotesSection">
-    <div class="row" id="notesRender"></div>
-    </div>
-  </div>
+  <hr>
+  <div class="container displayEmpty" id="displayNotesSection"></div>
 
   <script src="app.js"></script>
   </body>
