@@ -1,25 +1,29 @@
+
 html {
   $enable-negative-margins: true;
+  &::-webkit-scrollbar {
+    display: none;      //to hide scrollbars
+  }
 }
 
 nav {
   height: 4rem;
-  button.btn.btn-outline-primary {
-    color: black;
-    border: none;
-  }
   #logo {
     cursor: pointer;
   }
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    width: 100%;
+#submitNote:active {
+  transform: scale(1.05);
 }
 
-.btn.btn-primary.mx-5 {
-    margin-left: 15rem !important;
+.displayEmpty {
+  // height: 100px;
+  // width: 100%;
+  // border: 1px solid red;
+  text-align: center;
+  padding-top: 2rem;
+  color: gray;
 }
+
+

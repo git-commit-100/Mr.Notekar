@@ -41,27 +41,33 @@
         <a class="navbar-brand mx-5"><h3>Mr. Notekar</h3></a>
         <span class="navbar-text">"Mr. Notekar here to take your notes !"</span>
         <form class="d-flex me-4">
-          <input class="form-control me-2" type="search" placeholder="Search Your Notes" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit"><i class="far fa-search"></i></button>
+          <input class="form-control me-2" type="search" placeholder="Search Your Notes" 
+          aria-label="Search">
+          <button class="btn btn-light btn-outline-primary" type="submit"><i class="far fa-search"></i></button>
         </form>
       </div>
     </nav>
   </head>
 
-  <body>
-    <div class="container">
+  <body  style="padding-bottom: 5rem;">
+    <div class="container" id="addNotesSection">
     <form class="p-3 my-3">
       <div class="mb-3">
         <label for="noteTitle" class="form-label"><h3>Note Title</h3></label>
-        <input type="text" class="form-control" id="noteTitle" placeholder="Input Your Note Title Here">
-        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div> -->
+        <input type="text" class="form-control" id="noteTitle" autocomplete="off" placeholder="Input Your Note Title Here">
       <div class="my-4">
         <h3>Note Content</h3>
-        <textarea class="form-control" placeholder="Input Your Note Content Here" id="noteTxtArea" style="height: 10rem"></textarea>
+        <textarea class="form-control" placeholder="Input Your Note Content Here" id="noteTxtArea"
+         style="height: 10rem"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary" style="width: 15rem">Take A Note !</button>
+      <a id="submitNote" class="btn btn-outline-success" style="width: 12rem;" onclick="takeNote()">Take A Note&nbsp;
+        <i class="far fa-file-signature"></i></a>
     </form>
   </div>
+
+  <hr>
+  <div class="container displayEmpty" id="displayNotesSection"></div>
+
+  <script src="app.js"></script>
   </body>
 </html>

@@ -1,9 +1,23 @@
+html::-webkit-scrollbar {
+  display: none;
+}
+
 nav {
   height: 4rem;
 }
 
-nav .btn-outline-primary {
-  color: black;
-  background-color: lightblue;
+nav #logo {
+  cursor: pointer;
+}
+
+#submitNote:active {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.displayEmpty {
+  text-align: center;
+  padding-top: 2rem;
+  color: gray;
 }
 /*# sourceMappingURL=style.css.map */
