@@ -1,6 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: inherit;
+}
+
+.navbar-fixed {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+}
+
+.navbar-fixed nav {
+  height: 5rem !important;
+}
+
+.navbar-fixed .nav-wrapper {
+  color: #212121;
+}
+
+.navbar-fixed .nav-wrapper .brand-logo {
+  color: #198be7;
+  font-weight: 700;
+  margin: .5rem 0 0 3rem;
+}
+
+.navbar-fixed .nav-wrapper ul li a {
+  color: #212121;
+  font-size: 16px;
+  font-weight: 600;
+  margin: .5rem 3rem 0 0;
+}
+
+.navbar-fixed .nav-wrapper ul li a .iconify {
+  font-size: 18px;
+}
+
+.navbar-fixed .nav-wrapper ul li a:hover {
+  color: #198be7;
+  font-size: 18px;
+  background-color: transparent;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 /*# sourceMappingURL=style.css.map */
