@@ -1,29 +1,5 @@
-
-html {
-  $enable-negative-margins: true;
-  &::-webkit-scrollbar {
-    display: none;      //to hide scrollbars
-  }
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-nav {
-  height: 4rem;
-  #logo {
-    cursor: pointer;
-  }
-}
-
-#submitNote:active {
-  transform: scale(1.05);
-}
-
-.displayEmpty {
-  // height: 100px;
-  // width: 100%;
-  // border: 1px solid red;
-  text-align: center;
-  padding-top: 2rem;
-  color: gray;
-}
-
-
