@@ -5,41 +5,183 @@
   font-family: inherit;
 }
 
-.navbar-fixed {
-  position: -webkit-sticky !important;
-  position: sticky !important;
+nav {
+  height: 4rem !important;
 }
 
-.navbar-fixed nav {
-  height: 5rem !important;
-}
-
-.navbar-fixed .nav-wrapper {
-  color: #212121;
-}
-
-.navbar-fixed .nav-wrapper .brand-logo {
-  color: #198be7;
+nav a.brand-logo {
   font-weight: 700;
-  margin: .5rem 0 0 3rem;
+  font-size: 24px;
+  color: #fafafa;
+  margin: 0 0 0 -4rem;
 }
 
-.navbar-fixed .nav-wrapper ul li a {
-  color: #212121;
+@media only screen and (max-width: 570px) {
+  nav a.brand-logo {
+    margin-left: 1rem !important;
+  }
+}
+
+nav ul.right li a {
+  position: relative;
+  top: -4.5rem;
+  right: 0 !important;
   font-size: 16px;
   font-weight: 600;
-  margin: .5rem 3rem 0 0;
 }
 
-.navbar-fixed .nav-wrapper ul li a .iconify {
+nav ul.right li a span {
+  font-weight: 500 !important;
   font-size: 18px;
 }
 
-.navbar-fixed .nav-wrapper ul li a:hover {
-  color: #198be7;
-  font-size: 18px;
+nav ul.right li a:hover {
   background-color: transparent;
+  font-size: 18px;
+  color: #a1d5ff;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
+}
+
+nav div.center span {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: -3rem;
+}
+
+nav .sidenav-trigger .iconify {
+  font-weight: 600;
+  font-size: 32px;
+  position: relative;
+  top: 0.5rem;
+  left: 0;
+}
+
+.sidenav li a:hover, .sidenav li a:active {
+  color: #0e4470;
+  font-size: 18px;
+}
+
+#addNotesSection {
+  /* label focus color */
+  /* label underline focus color */
+  /* icon prefix color */
+  /* icon prefix focus color */
+}
+
+#addNotesSection .card.white {
+  margin-top: -3rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0 0 3rem;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 992px) {
+  #addNotesSection .card.white {
+    margin-top: 1.5rem;
+  }
+}
+
+#addNotesSection .card.white .card-title {
+  font-weight: 500;
+  color: #0e4470;
+}
+
+#addNotesSection .card.white .messageBoxWrap {
+  position: relative;
+  padding: 0.5rem;
+  left: 20%;
+  margin: 0.5rem 0;
+  height: 20%;
+  width: 60%;
+  background-color: #5fff87;
+  display: none;
+}
+
+#addNotesSection .card.white .message {
+  overflow: hidden;
+  position: relative;
+  left: 35%;
+  right: inherit;
+}
+
+@media only screen and (max-width: 1102px) {
+  #addNotesSection .card.white .message {
+    position: relative;
+    left: 30%;
+    right: inherit;
+  }
+}
+
+@media only screen and (max-width: 489px) {
+  #addNotesSection .card.white .message {
+    position: relative;
+    left: 5%;
+    right: inherit;
+  }
+}
+
+#addNotesSection .input-field input[type="text"]:focus + label {
+  color: #0e4470;
+}
+
+#addNotesSection .input-field input[type="text"]:focus {
+  border-bottom: 1px solid #0e4470;
+  -webkit-box-shadow: 0 1px 0 0 #0e4470;
+          box-shadow: 0 1px 0 0 #0e4470;
+}
+
+#addNotesSection .input-field .prefix {
+  color: gray;
+}
+
+#addNotesSection .input-field .prefix.active {
+  color: #0e4470;
+}
+
+#addNotesSection .btnWrap {
+  position: relative;
+  top: 1rem;
+  bottom: 1rem;
+  left: 2rem;
+}
+
+#addNotesSection .btnWrap .btn {
+  width: 25%;
+  font-size: 16px;
+  text-transform: none;
+  background-color: transparent;
+  color: #319b38;
+  border: 1px solid #319b38;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 25px 0 25px 0;
+}
+
+#addNotesSection .btnWrap .btn:hover, #addNotesSection .btnWrap .btn:active {
+  background-color: #319b38;
+  color: white;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
+#addNotesSection .btnWrap .btn .iconify {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 841px) {
+  #addNotesSection .btnWrap .btn {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  #addNotesSection .btnWrap .btn {
+    width: 60%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

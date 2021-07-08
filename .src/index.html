@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Mr.Notekar</title>
+
     <link rel="stylesheet" href="styles/style.css" />
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <!-- <script type="javascript" src="/assets/font-aweswome-full.js"></script> -->
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
@@ -15,45 +14,167 @@
     />
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <div class="navbar-fixed">
-      <nav class="white">
-        <div class="nav-wrapper black-text">
-          <a href="#" class="brand-logo">Mr.Notekar</a>
-          <ul class="right hide-on-med-and-down">
-            <li>
-              <a href="#"
-                >About Us&nbsp;<span
-                  class="iconify"
-                  data-icon="bx:bx-user"
-                  data-inline="true"
-                ></span
-              ></a>
-            </li>
-            <li>
-              <a href="#"
-                >Contact Us&nbsp;<span
-                  class="iconify"
-                  data-icon="fluent:headset-16-regular"
-                  data-inline="true"
-                ></span
-              ></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- icon pack -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
   </head>
 
-  <body>
-    <div class="container" id="main">
-      <div class="container row" id="addNotesSection">
-        <div class="card white col s12 m12 l12"></div>
+  <body class="grey lighten-3">
+    <!-- navigation bar -->
+    <nav class="nav-wrapper grey darken-4">
+      <div class="container">
+        <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+          <span
+            class="iconify"
+            data-icon="bytesize:menu"
+            data-inline="true"
+          ></span
+        ></a>
+        <a href="#" class="brand-logo"
+          >Mr.Notekar
+          <span
+            class="iconify"
+            data-icon="fa-solid:pen-square"
+            data-inline="true"
+          ></span
+        ></a>
+        <div class="center">
+          <span class="grey-text lighten-3 hide-on-med-and-down"
+            >"Mr.Notekar Is Here To Take Your Notes"</span
+          >
+        </div>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a href="#"
+              >About Us
+              <span
+                class="iconify"
+                data-icon="carbon:user-multiple"
+                data-inline="true"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="#"
+              >Contact Us
+              <span
+                class="iconify"
+                data-icon="fluent:mail-48-regular"
+                data-inline="true"
+              ></span
+            ></a>
+          </li>
+        </ul>
       </div>
-      <div></div>
-      <div></div>
+    </nav>
+
+    <ul id="mobile-nav" class="sidenav">
+      <li class="grey lighten-3">
+        <a class="subheader" style="font-size: 20px; font-weight: 500"
+          >Mr.Notekar
+          <span
+            class="iconify"
+            data-icon="fa-solid:pen-square"
+            data-inline="true"
+          ></span
+        ></a>
+        <a
+          class="subheader desc"
+          style="
+            margin-left: -0.5rem;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+          "
+          >"Mr.Notekar Is Here To Take Your Notes"</a
+        >
+      </li>
+      <hr />
+      <li>
+        <a href="#"
+          >Home
+          <span
+            class="iconify"
+            data-icon="codicon:home"
+            data-inline="true"
+          ></span>
+        </a>
+      </li>
+      <li>
+        <a href="#"
+          >About Us
+          <span
+            class="iconify"
+            data-icon="carbon:user-multiple"
+            data-inline="true"
+          ></span
+        ></a>
+      </li>
+      <li>
+        <a href="#"
+          >Contact Us
+          <span
+            class="iconify"
+            data-icon="fluent:mail-48-regular"
+            data-inline="true"
+          ></span
+        ></a>
+      </li>
+    </ul>
+
+    <!-- addnotes section -->
+    <div class="container row" id="addNotesSection">
+      <div class="col s12 m12 l12 card white">
+        <div class="card-content">
+          <span class="card-title center">Add Your Notes Here !</span>
+
+          <!-- messageBox -->
+          <div class="messageBoxWrap col s12 m12 l12">
+            <span class="message">Your Note was added</span>
+            <div class="messageBox"></div>
+          </div>
+
+          <!-- form -->
+          <div class="input-field col s12 m12 l12">
+            <span
+              class="iconify prefix"
+              data-icon="fluent:text-bullet-list-square-edit-20-regular"
+              data-inline="true"
+            ></span>
+            <input type="text" id="noteTitle" autocomplete="off" />
+            <label for="noteTitle">Add Your Title Here</label>
+          </div>
+          <div class="input-field col s12 m12 l12">
+            <span
+              class="iconify prefix"
+              data-icon="fluent:text-bullet-list-square-edit-20-regular"
+              data-inline="true"
+            ></span>
+            <input type="text" id="noteContent" autocomplete="off" />
+            <label for="noteContent">Add Your Note Content Here</label>
+          </div>
+          <div class="btnWrap left" style="width:100%">
+            <a class="btn waves-effect">Take A Note
+              <span class="iconify" data-icon="la:check-square-solid" data-inline="true"></span></a>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <!-- show notes section -->
+
+
     <script src="logic.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems);
+      });
+    </script>
   </body>
 </html>
