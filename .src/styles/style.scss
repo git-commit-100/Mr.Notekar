@@ -4,7 +4,7 @@ $primary: #a1d5ff;
 $darkBlue: #0e4470;
 $success: #5fff87;
 $darkGreen: #319b38;
-$danger: #ff685d;
+$danger: #f32013;
 $light: #fafafa;
 $dark: #212121;
 $transition: all 250ms ease-in-out;
@@ -27,6 +27,7 @@ nav {
 
     @media only screen and (max-width: 570px) {
       margin-left: 1rem !important;
+      overflow: hidden;
     }
   }
   ul.right li {
@@ -59,7 +60,7 @@ nav {
   }
 
   .sidenav-trigger .iconify {
-    font-weight: 600;
+    font-weight: 800;
     font-size: 32px;
     position: relative;
     top: 0.5rem;
@@ -86,6 +87,7 @@ nav {
 
     @media only screen and (max-width: 992px) {
       margin-top: 1.5rem;
+      overflow: hidden;
     }
 
     .card-title {
@@ -128,8 +130,15 @@ nav {
   .input-field input[type="text"]:focus + label {
     color: $darkBlue;
   }
+  .input-field textarea:focus + label {
+    color: $darkBlue;
+  }
   /* label underline focus color */
   .input-field input[type="text"]:focus {
+    border-bottom: 1px solid $darkBlue;
+    box-shadow: 0 1px 0 0 $darkBlue;
+  }
+  .input-field textarea:focus {
     border-bottom: 1px solid $darkBlue;
     box-shadow: 0 1px 0 0 $darkBlue;
   }
@@ -144,11 +153,13 @@ nav {
 
   .btnWrap {
     position: relative;
-    top: 1rem;
+    top: 0.5rem;
     bottom: 1rem;
     left: 2rem;
+    overflow: hidden;
 
     .btn {
+      z-index: 0;
       width: 25%;
       font-size: 16px;
       text-transform: none;
@@ -157,6 +168,7 @@ nav {
       border: 1px solid $darkGreen;
       box-shadow: none;
       border-radius: 25px 0 25px 0;
+      overflow: hidden;
       &:hover,
       &:active {
         background-color: $darkGreen;
@@ -171,10 +183,75 @@ nav {
 
       @media only screen and (max-width: 841px) {
         width: 40%;
+        overflow: hidden;
       }
       @media only screen and (max-width: 470px) {
         width: 60%;
+        overflow: hidden;
       }
+    }
+  }
+}
+
+#showNotesSection {
+  .card {
+    padding-bottom: 3rem;
+    .card-title {
+      font-weight: 500;
+    }
+    .divider + p {
+      margin-top: 0.5rem;
+    }
+
+    a.btn {
+      text-transform: none;
+      position: relative;
+      top: 1.5rem;
+      border-radius: 25px 0 25px 0;
+      background-color: transparent;
+      &.viewBtn {
+        color: $darkBlue;
+        border: 1px solid $darkBlue;
+        box-shadow: none;
+        &:hover {
+          color: white;
+          background-color: $darkBlue;
+          transition: $transition;
+        }
+      }
+      &.delBtn {
+        color: $danger;
+        border: 1px solid $danger;
+        box-shadow: none;
+        &:hover {
+          color: white;
+          background-color: $danger;
+          transition: $transition;
+        }
+      }
+    }
+  }
+}
+
+// modal
+.modal {
+  h4 {
+    font-weight: 500;
+  }
+  p {
+    margin-top: 0.5rem;
+  }
+  a.modal-close {
+    margin-right: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    text-transform: none;
+    background-color: white;
+    border: 1px solid $darkBlue;
+    &:hover,
+    &:active {
+      color: white;
+      background-color: $darkBlue;
+      transition: $transition;
     }
   }
 }

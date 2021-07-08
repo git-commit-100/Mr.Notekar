@@ -19,6 +19,7 @@ nav a.brand-logo {
 @media only screen and (max-width: 570px) {
   nav a.brand-logo {
     margin-left: 1rem !important;
+    overflow: hidden;
   }
 }
 
@@ -51,7 +52,7 @@ nav div.center span {
 }
 
 nav .sidenav-trigger .iconify {
-  font-weight: 600;
+  font-weight: 800;
   font-size: 32px;
   position: relative;
   top: 0.5rem;
@@ -82,6 +83,7 @@ nav .sidenav-trigger .iconify {
 @media only screen and (max-width: 992px) {
   #addNotesSection .card.white {
     margin-top: 1.5rem;
+    overflow: hidden;
   }
 }
 
@@ -128,7 +130,17 @@ nav .sidenav-trigger .iconify {
   color: #0e4470;
 }
 
+#addNotesSection .input-field textarea:focus + label {
+  color: #0e4470;
+}
+
 #addNotesSection .input-field input[type="text"]:focus {
+  border-bottom: 1px solid #0e4470;
+  -webkit-box-shadow: 0 1px 0 0 #0e4470;
+          box-shadow: 0 1px 0 0 #0e4470;
+}
+
+#addNotesSection .input-field textarea:focus {
   border-bottom: 1px solid #0e4470;
   -webkit-box-shadow: 0 1px 0 0 #0e4470;
           box-shadow: 0 1px 0 0 #0e4470;
@@ -144,12 +156,14 @@ nav .sidenav-trigger .iconify {
 
 #addNotesSection .btnWrap {
   position: relative;
-  top: 1rem;
+  top: 0.5rem;
   bottom: 1rem;
   left: 2rem;
+  overflow: hidden;
 }
 
 #addNotesSection .btnWrap .btn {
+  z-index: 0;
   width: 25%;
   font-size: 16px;
   text-transform: none;
@@ -159,6 +173,7 @@ nav .sidenav-trigger .iconify {
   -webkit-box-shadow: none;
           box-shadow: none;
   border-radius: 25px 0 25px 0;
+  overflow: hidden;
 }
 
 #addNotesSection .btnWrap .btn:hover, #addNotesSection .btnWrap .btn:active {
@@ -176,12 +191,85 @@ nav .sidenav-trigger .iconify {
 @media only screen and (max-width: 841px) {
   #addNotesSection .btnWrap .btn {
     width: 40%;
+    overflow: hidden;
   }
 }
 
 @media only screen and (max-width: 470px) {
   #addNotesSection .btnWrap .btn {
     width: 60%;
+    overflow: hidden;
   }
+}
+
+#showNotesSection .card {
+  padding-bottom: 3rem;
+}
+
+#showNotesSection .card .card-title {
+  font-weight: 500;
+}
+
+#showNotesSection .card .divider + p {
+  margin-top: 0.5rem;
+}
+
+#showNotesSection .card a.btn {
+  text-transform: none;
+  position: relative;
+  top: 1.5rem;
+  border-radius: 25px 0 25px 0;
+  background-color: transparent;
+}
+
+#showNotesSection .card a.btn.viewBtn {
+  color: #0e4470;
+  border: 1px solid #0e4470;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#showNotesSection .card a.btn.viewBtn:hover {
+  color: white;
+  background-color: #0e4470;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
+#showNotesSection .card a.btn.delBtn {
+  color: #f32013;
+  border: 1px solid #f32013;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#showNotesSection .card a.btn.delBtn:hover {
+  color: white;
+  background-color: #f32013;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
+.modal h4 {
+  font-weight: 500;
+}
+
+.modal p {
+  margin-top: 0.5rem;
+}
+
+.modal a.modal-close {
+  margin-right: 1rem !important;
+  margin-bottom: 0.5rem !important;
+  text-transform: none;
+  background-color: white;
+  border: 1px solid #0e4470;
+}
+
+.modal a.modal-close:hover, .modal a.modal-close:active {
+  color: white;
+  background-color: #0e4470;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 /*# sourceMappingURL=style.css.map */
