@@ -59,16 +59,22 @@ nav .sidenav-trigger .iconify {
   left: 0;
 }
 
+.sidenav li a {
+  font-size: 18px;
+}
+
 .sidenav li a:hover, .sidenav li a:active {
   color: #0e4470;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+svg.iconify.prefix.active {
+  color: #0e4470;
 }
 
 #addNotesSection {
   /* label focus color */
   /* label underline focus color */
-  /* icon prefix color */
-  /* icon prefix focus color */
 }
 
 #addNotesSection .card.white {
@@ -140,21 +146,45 @@ nav .sidenav-trigger .iconify {
           box-shadow: 0 1px 0 0 #0e4470;
 }
 
-#addNotesSection .input-field textarea:focus {
-  border-bottom: 1px solid #0e4470;
+textarea.myTextArea {
+  margin-top: .5rem;
+}
+
+textarea.myTextArea::-webkit-input-placeholder {
+  color: gray;
+}
+
+textarea.myTextArea:-ms-input-placeholder {
+  color: gray;
+}
+
+textarea.myTextArea::-ms-input-placeholder {
+  color: gray;
+}
+
+textarea.myTextArea::placeholder {
+  color: gray;
+}
+
+textarea.myTextArea:focus, textarea.myTextArea:active {
+  border: none !important;
+  outline: none !important;
+  border-bottom: 1px solid #0e4470 !important;
   -webkit-box-shadow: 0 1px 0 0 #0e4470;
           box-shadow: 0 1px 0 0 #0e4470;
 }
 
-#addNotesSection .input-field .prefix {
+/* icon prefix color */
+.input-field .prefix {
   color: gray;
 }
 
-#addNotesSection .input-field .prefix.active {
+/* icon prefix focus color */
+.input-field .prefix.active {
   color: #0e4470;
 }
 
-#addNotesSection .btnWrap {
+.btnWrap {
   position: relative;
   top: 0.5rem;
   bottom: 1rem;
@@ -162,7 +192,7 @@ nav .sidenav-trigger .iconify {
   overflow: hidden;
 }
 
-#addNotesSection .btnWrap .btn {
+.btnWrap .btn {
   z-index: 0;
   width: 25%;
   font-size: 16px;
@@ -176,27 +206,27 @@ nav .sidenav-trigger .iconify {
   overflow: hidden;
 }
 
-#addNotesSection .btnWrap .btn:hover, #addNotesSection .btnWrap .btn:active {
+.btnWrap .btn:hover, .btnWrap .btn:active {
   background-color: #319b38;
   color: white;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
 
-#addNotesSection .btnWrap .btn .iconify {
+.btnWrap .btn .iconify {
   font-size: 18px;
   font-weight: 600;
 }
 
 @media only screen and (max-width: 841px) {
-  #addNotesSection .btnWrap .btn {
+  .btnWrap .btn {
     width: 40%;
     overflow: hidden;
   }
 }
 
 @media only screen and (max-width: 470px) {
-  #addNotesSection .btnWrap .btn {
+  .btnWrap .btn {
     width: 60%;
     overflow: hidden;
   }
@@ -210,7 +240,7 @@ nav .sidenav-trigger .iconify {
   font-weight: 500;
 }
 
-#showNotesSection .card .divider + p {
+#showNotesSection .card .divider + p.truncate {
   margin-top: 0.5rem;
 }
 

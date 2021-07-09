@@ -70,13 +70,19 @@ nav {
 
 .sidenav {
   li a {
+    font-size: 18px;
     &:hover,
     &:active {
       color: $darkBlue;
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 }
+
+svg.iconify.prefix.active{
+  color: $darkBlue;
+}
+
 
 #addNotesSection {
   .card.white {
@@ -130,6 +136,7 @@ nav {
   .input-field input[type="text"]:focus + label {
     color: $darkBlue;
   }
+
   .input-field textarea:focus + label {
     color: $darkBlue;
   }
@@ -138,57 +145,67 @@ nav {
     border-bottom: 1px solid $darkBlue;
     box-shadow: 0 1px 0 0 $darkBlue;
   }
-  .input-field textarea:focus {
-    border-bottom: 1px solid $darkBlue;
-    box-shadow: 0 1px 0 0 $darkBlue;
-  }
-  /* icon prefix color */
-  .input-field .prefix {
+}
+
+textarea.myTextArea{
+  margin-top: .5rem;
+  &::placeholder{
     color: gray;
   }
-  /* icon prefix focus color */
-  .input-field .prefix.active {
-    color: $darkBlue;
-  }
+}
 
-  .btnWrap {
-    position: relative;
-    top: 0.5rem;
-    bottom: 1rem;
-    left: 2rem;
+textarea.myTextArea:focus , textarea.myTextArea:active{
+  border: none !important;
+  outline: none !important;
+  border-bottom: 1px solid $darkBlue !important;
+  box-shadow: 0 1px 0 0 $darkBlue;
+}
+/* icon prefix color */
+.input-field .prefix {
+  color: gray;
+}
+/* icon prefix focus color */
+.input-field .prefix.active{
+  color: $darkBlue;
+}
+
+.btnWrap {
+  position: relative;
+  top: 0.5rem;
+  bottom: 1rem;
+  left: 2rem;
+  overflow: hidden;
+
+  .btn {
+    z-index: 0;
+    width: 25%;
+    font-size: 16px;
+    text-transform: none;
+    background-color: transparent;
+    color: $darkGreen;
+    border: 1px solid $darkGreen;
+    box-shadow: none;
+    border-radius: 25px 0 25px 0;
     overflow: hidden;
+    &:hover,
+    &:active {
+      background-color: $darkGreen;
+      color: white;
+      transition: $transition;
+    }
 
-    .btn {
-      z-index: 0;
-      width: 25%;
-      font-size: 16px;
-      text-transform: none;
-      background-color: transparent;
-      color: $darkGreen;
-      border: 1px solid $darkGreen;
-      box-shadow: none;
-      border-radius: 25px 0 25px 0;
+    .iconify {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    @media only screen and (max-width: 841px) {
+      width: 40%;
       overflow: hidden;
-      &:hover,
-      &:active {
-        background-color: $darkGreen;
-        color: white;
-        transition: $transition;
-      }
-
-      .iconify {
-        font-size: 18px;
-        font-weight: 600;
-      }
-
-      @media only screen and (max-width: 841px) {
-        width: 40%;
-        overflow: hidden;
-      }
-      @media only screen and (max-width: 470px) {
-        width: 60%;
-        overflow: hidden;
-      }
+    }
+    @media only screen and (max-width: 470px) {
+      width: 60%;
+      overflow: hidden;
     }
   }
 }
@@ -199,7 +216,7 @@ nav {
     .card-title {
       font-weight: 500;
     }
-    .divider + p {
+    .divider + p.truncate {
       margin-top: 0.5rem;
     }
 
