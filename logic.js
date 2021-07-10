@@ -4,6 +4,9 @@
 const showNotesSection = document.getElementById("showNotesSection");
 const modalWrap = document.querySelector(".modal-wrap");
 
+//note count
+var noteCount = 0;
+
 //note class
 class Note {
   constructor(title, body) {
@@ -39,10 +42,11 @@ takeNote.addEventListener("click", function () {
 
 //add note to ui
 function addNoteToUI(note) {
+  noteCount += 1;
   const htmlofUiNote = document.createElement("div");
   htmlofUiNote.innerHTML = `
     <span hidden>${note.id}</span>
-    <div class="col s12 m6 l4 card note hoverable white">
+    <div class="col s12 m6 l4 note card hoverable white">
     <div class="card-content">
       <span class="card-title note-title">${note.title}</span>
       <div class="divider"></div>
@@ -59,12 +63,26 @@ function addNoteToUI(note) {
 
   showNotesSection.appendChild(htmlofUiNote);
 
-  //note card buttons
-const noteContainer = document.querySelector('.note');
-noteContainer.addEventListener('click',function(e){
-  console.log(e.target);
+  //note card buttons : insert into modal and delete button
+    showNotesSection.addEventListener("click", function(e){
+      if (e.target.classList.contains("viewBtn")) {
+        var currentNote = e.target.closest(".note");
+        var currentTitle = currentNote.querySelector(".note-title").textContent;
+        var currentBody = currentNote.querySelector(".note-body").textContent;
+        insertIntoModal(currentTitle, currentBody);
+      }
 
+      if (e.target.classList.contains("delBtn")) {
+        var currentNote = e.target.closest(".note");
+        currentNote.remove();
+      }
+    });
+}
 
-
-});
+function insertIntoModal(title, body) {
+  var parentElem = document.getElementById("modal99");
+  var modalTitle = parentElem.querySelector(".modal-title");
+  var modalBody = parentElem.querySelector(".modal-body");
+  modalTitle.textContent = title;
+  modalBody.textContent = body;
 }
