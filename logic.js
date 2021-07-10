@@ -44,9 +44,10 @@ takeNote.addEventListener("click", function () {
 function addNoteToUI(note) {
   noteCount += 1;
   const htmlofUiNote = document.createElement("div");
+  htmlofUiNote.classList.add('note');
   htmlofUiNote.innerHTML = `
     <span hidden>${note.id}</span>
-    <div class="col s12 m6 l4 note card hoverable white">
+    <div class="col s12 m6 l4 card hoverable white">
     <div class="card-content">
       <span class="card-title note-title">${note.title}</span>
       <div class="divider"></div>
@@ -65,8 +66,9 @@ function addNoteToUI(note) {
 
   //note card buttons : insert into modal and delete button
     showNotesSection.addEventListener("click", function(e){
-      if (e.target.classList.contains("viewBtn")) {
+      if (e.target.classList.contains("viewBtn")){
         var currentNote = e.target.closest(".note");
+        // console.log(currentNote);
         var currentTitle = currentNote.querySelector(".note-title").textContent;
         var currentBody = currentNote.querySelector(".note-body").textContent;
         insertIntoModal(currentTitle, currentBody);
