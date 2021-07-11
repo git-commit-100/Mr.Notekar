@@ -4,7 +4,7 @@ $primary: #a1d5ff;
 $darkBlue: #0e4470;
 $success: #5fff87;
 $darkGreen: #319b38;
-$danger: #fd261b;
+$danger: #ff4b41;
 $light: #fafafa;
 $dark: #212121;
 $transition: all 250ms ease-in-out;
@@ -120,8 +120,8 @@ svg.iconify.prefix.active{
       .success-msg{
         padding: 0.5rem;
         position: relative;
-        background-color: $success;
-        color: black;
+        background-color: $darkGreen;
+        color: white;
         width: 100%;
       }
       .delete-msg{

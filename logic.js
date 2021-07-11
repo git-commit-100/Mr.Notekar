@@ -79,8 +79,8 @@ function addNoteToUI(note) {
 
     //deleting a note
     if (e.target.classList.contains("delBtn")) {
-      var currentNote = e.target.closest(".note");
-      currentNote.remove();
+      var noteToBeDel = e.target.closest(".note");
+      noteToBeDel.remove();
       showAlertMsg("Your Note was deleted !", "delete-msg");
     }
   });

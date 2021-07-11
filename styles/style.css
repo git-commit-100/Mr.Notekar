@@ -118,15 +118,15 @@ svg.iconify.prefix.active {
 #addNotesSection .card.white .messageBox .success-msg {
   padding: 0.5rem;
   position: relative;
-  background-color: #5fff87;
-  color: black;
+  background-color: #319b38;
+  color: white;
   width: 100%;
 }
 
 #addNotesSection .card.white .messageBox .delete-msg {
   padding: 0.5rem;
   position: relative;
-  background-color: #fd261b;
+  background-color: #ff4b41;
   color: white;
   width: 100%;
 }
@@ -289,15 +289,15 @@ textarea.myTextArea:focus, textarea.myTextArea:active {
 }
 
 #showNotesSection .card a.btn.delBtn {
-  color: #fd261b;
-  border: 1px solid #fd261b;
+  color: #ff4b41;
+  border: 1px solid #ff4b41;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 #showNotesSection .card a.btn.delBtn:hover {
   color: white;
-  background-color: #fd261b;
+  background-color: #ff4b41;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
