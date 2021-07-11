@@ -71,7 +71,6 @@ function addNoteToUI(note) {
   showNotesSection.addEventListener("click", function (e) {
     if (e.target.classList.contains("viewBtn")) {
       var currentNote = e.target.closest(".note");
-      // console.log(currentNote);
       var currentTitle = currentNote.querySelector(".note-title").textContent;
       var currentBody = currentNote.querySelector(".note-body").textContent;
       insertIntoModal(currentTitle, currentBody);
