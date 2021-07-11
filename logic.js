@@ -32,11 +32,11 @@ takeNote.addEventListener("click", function () {
     noteContent.value = "";
     noteTitle.focus();
   } else if (noteTitle.value.length <= 0) {
-    showAlertMsg("Please Add a Note Title !", "noteAdd-msg");
+    showAlertMsg("Please Add a Note Title", "noteAdd-msg");
     noteTitle.focus();
     // noteTitle.value = 'Default Note';
   } else if (noteContent.value.length <= 0) {
-    showAlertMsg("Please Add Note Content !", "noteAdd-msg");
+    showAlertMsg("Please Add Note Content", "noteAdd-msg");
     noteContent.focus();
     // noteContent.value = 'Default Note';
   }
@@ -65,7 +65,7 @@ function addNoteToUI(note) {
     `;
 
   showNotesSection.appendChild(htmlofUiNote);
-  showAlertMsg("Your Note was Added !", "success-msg");
+  showAlertMsg("Your Note was Added", "success-msg");
 
   //note card buttons : insert into modal and delete button
   showNotesSection.addEventListener("click", function (e) {
@@ -104,7 +104,7 @@ function executeOnce() {
   lastClick = Date.now();
 
   //main function calling
-  showAlertMsg("Your Note was deleted !", "delete-msg");
+  showAlertMsg("Your Note was deleted", "delete-msg");
 }
 
 //message functionality
