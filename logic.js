@@ -70,7 +70,7 @@ function addNoteToUI(note) {
   //note card buttons : insert into modal and delete button
   showNotesSection.addEventListener("click", function (e) {
     if (e.target.classList.contains("viewBtn")) {
-      var currentNote = e.target.closest(".note");
+      const currentNote = e.target.closest(".note");
       var currentTitle = currentNote.querySelector(".note-title").textContent;
       var currentBody = currentNote.querySelector(".note-body").textContent;
       insertIntoModal(currentTitle, currentBody);
@@ -78,9 +78,9 @@ function addNoteToUI(note) {
 
     //deleting a note
     if (e.target.classList.contains("delBtn")) {
-      var noteToBeDel = e.target.closest(".note");
-      noteToBeDel.remove();
-      showAlertMsg("Your Note was deleted !", "delete-msg");
+      const currentNote = e.target.closest(".note");
+      currentNote.remove();
+      executeOnce();
     }
   });
 }
@@ -94,22 +94,35 @@ function insertIntoModal(title, body) {
   modalBody.textContent = body;
 }
 
+// prevent multiple calling
+var lastClick = 0;
+var delay = 500;
+function executeOnce() {
+  if(lastClick >= (Date.now() - delay)){
+    return;
+  }
+  lastClick = Date.now();
+
+  //main function calling
+  showAlertMsg("Your Note was deleted !", "delete-msg");
+}
+
 //message functionality
 function showAlertMsg(msg, msgClass) {
-  messageBox.style.display = 'block';
-  var msgDiv = document.createElement('div');
-  msgDiv.className = 'messageBody';
-  msgDiv.classList.add('center');
+  messageBox.style.display = "block";
+  const msgDiv = document.createElement("div");
+  msgDiv.className = "messageBody";
+  msgDiv.classList.add("center");
   msgDiv.classList.add(msgClass);
 
-  const msgBody = document.createTextNode(msg);
-  msgDiv.appendChild(msgBody);
+  msgDiv.appendChild(document.createTextNode(msg));
 
   messageBox.appendChild(msgDiv);
+
   //timeout for msgDiv
   setTimeout(function () {
     msgDiv.remove();
-  messageBox.style.display = 'none';
+    messageBox.style.display = "none";
   }, 2000);
   noteTitle.focus();
 }
