@@ -98,15 +98,37 @@ svg.iconify.prefix.active {
   color: #0e4470;
 }
 
-#addNotesSection .card.white .messageBoxWrap {
+#addNotesSection .card.white .messageBox {
   position: relative;
-  padding: 0.5rem;
   left: 20%;
   margin: 0.5rem 0;
   height: 20%;
   width: 60%;
-  background-color: #5fff87;
   display: none;
+}
+
+#addNotesSection .card.white .messageBox .noteAdd-msg {
+  padding: 0.5rem;
+  position: relative;
+  background-color: #a1d5ff;
+  color: black;
+  width: 100%;
+}
+
+#addNotesSection .card.white .messageBox .success-msg {
+  padding: 0.5rem;
+  position: relative;
+  background-color: #5fff87;
+  color: black;
+  width: 100%;
+}
+
+#addNotesSection .card.white .messageBox .delete-msg {
+  padding: 0.5rem;
+  position: relative;
+  background-color: #fd261b;
+  color: white;
+  width: 100%;
 }
 
 #addNotesSection .card.white .message {
@@ -267,15 +289,15 @@ textarea.myTextArea:focus, textarea.myTextArea:active {
 }
 
 #showNotesSection .card a.btn.delBtn {
-  color: #f32013;
-  border: 1px solid #f32013;
+  color: #fd261b;
+  border: 1px solid #fd261b;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 #showNotesSection .card a.btn.delBtn:hover {
   color: white;
-  background-color: #f32013;
+  background-color: #fd261b;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }

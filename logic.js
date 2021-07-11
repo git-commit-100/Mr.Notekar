@@ -2,7 +2,8 @@
 
 //global selectors
 const showNotesSection = document.getElementById("showNotesSection");
-const modalWrap = document.querySelector(".modal-wrap");
+const noteTitle = document.getElementById("noteTitle");
+const messageBox = document.getElementsByClassName("messageBox")[0];
 
 //note count
 var noteCount = 0;
@@ -20,7 +21,6 @@ class Note {
 //takeNote btn
 let takeNote = document.getElementById("takeNote");
 takeNote.addEventListener("click", function () {
-  const noteTitle = document.getElementById("noteTitle");
   const noteContent = document.getElementById("noteContent");
 
   //validate notes
@@ -32,9 +32,11 @@ takeNote.addEventListener("click", function () {
     noteContent.value = "";
     noteTitle.focus();
   } else if (noteTitle.value.length <= 0) {
+    showAlertMsg("Please Add a Note Title !", "noteAdd-msg");
     noteTitle.focus();
     // noteTitle.value = 'Default Note';
   } else if (noteContent.value.length <= 0) {
+    showAlertMsg("Please Add Note Content !", "noteAdd-msg");
     noteContent.focus();
     // noteContent.value = 'Default Note';
   }
@@ -44,7 +46,7 @@ takeNote.addEventListener("click", function () {
 function addNoteToUI(note) {
   noteCount += 1;
   const htmlofUiNote = document.createElement("div");
-  htmlofUiNote.classList.add('note');
+  htmlofUiNote.classList.add("note");
   htmlofUiNote.innerHTML = `
     <span hidden>${note.id}</span>
     <div class="col s12 m6 l4 card hoverable white">
@@ -63,28 +65,52 @@ function addNoteToUI(note) {
     `;
 
   showNotesSection.appendChild(htmlofUiNote);
+  showAlertMsg("Your Note was Added !", "success-msg");
 
   //note card buttons : insert into modal and delete button
-    showNotesSection.addEventListener("click", function(e){
-      if (e.target.classList.contains("viewBtn")){
-        var currentNote = e.target.closest(".note");
-        // console.log(currentNote);
-        var currentTitle = currentNote.querySelector(".note-title").textContent;
-        var currentBody = currentNote.querySelector(".note-body").textContent;
-        insertIntoModal(currentTitle, currentBody);
-      }
+  showNotesSection.addEventListener("click", function (e) {
+    if (e.target.classList.contains("viewBtn")) {
+      var currentNote = e.target.closest(".note");
+      // console.log(currentNote);
+      var currentTitle = currentNote.querySelector(".note-title").textContent;
+      var currentBody = currentNote.querySelector(".note-body").textContent;
+      insertIntoModal(currentTitle, currentBody);
+    }
 
-      if (e.target.classList.contains("delBtn")) {
-        var currentNote = e.target.closest(".note");
-        currentNote.remove();
-      }
-    });
+    //deleting a note
+    if (e.target.classList.contains("delBtn")) {
+      var currentNote = e.target.closest(".note");
+      currentNote.remove();
+      showAlertMsg("Your Note was deleted !", "delete-msg");
+    }
+  });
 }
 
+//insert note into modal
 function insertIntoModal(title, body) {
   var parentElem = document.getElementById("modal99");
   var modalTitle = parentElem.querySelector(".modal-title");
   var modalBody = parentElem.querySelector(".modal-body");
   modalTitle.textContent = title;
   modalBody.textContent = body;
+}
+
+//message functionality
+function showAlertMsg(msg, msgClass) {
+  messageBox.style.display = 'block';
+  var msgDiv = document.createElement('div');
+  msgDiv.className = 'messageBody';
+  msgDiv.classList.add('center');
+  msgDiv.classList.add(msgClass);
+
+  const msgBody = document.createTextNode(msg);
+  msgDiv.appendChild(msgBody);
+
+  messageBox.appendChild(msgDiv);
+  //timeout for msgDiv
+  setTimeout(function () {
+    msgDiv.remove();
+  messageBox.style.display = 'none';
+  }, 2000);
+  noteTitle.focus();
 }
