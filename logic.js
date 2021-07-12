@@ -4,6 +4,7 @@
 const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
 const messageBox = document.getElementsByClassName("messageBox")[0];
+const elems1 = document.querySelectorAll(".modal");
 
 //NOTE COUNT
 var noteCount = 0;
@@ -36,7 +37,6 @@ takeNote.addEventListener("click", function () {
     noteContent.value = "";
     showAlertMsg("Your Note was Added", "success-msg");
     noteTitle.focus();
-
   } else if (noteTitle.value.length <= 0) {
     showAlertMsg("Please Add a Note Title", "noteAdd-msg");
     noteTitle.focus();
@@ -69,31 +69,33 @@ function addNoteToUI(note) {
     `;
 
   showNotesSection.appendChild(htmlofUiNote);
+}
 
-  //NOTE CARD BUTTONS
-  showNotesSection.addEventListener("click", function (e) {
-    //VIEW NOTE BTN
-    if (e.target.classList.contains("viewBtn")) {
-      const currentNote = e.target.closest(".note");
-      var currentTitle = currentNote.querySelector(".note-title").textContent;
-      var currentBody = currentNote.querySelector(".note-body").textContent;
-      insertIntoModal(currentTitle, currentBody);
-    }
+//NOTE CARD BUTTONS
+showNotesSection.addEventListener("click", function (e) {
+  //VIEW NOTE BTN
+  if (e.target.classList.contains("viewBtn")) {
+    const currentNote = e.target.closest(".note");
+    var currentTitle = currentNote.querySelector(".note-title").textContent;
+    var currentBody = currentNote.querySelector(".note-body").textContent;
+    insertIntoModal(currentTitle, currentBody);
+  }
 
-    //DELETE NOTE BTN
-    if (e.target.classList.contains("delBtn")) {
-      const currentNote = e.target.closest(".note");
-      const currentTitle = currentNote.querySelector('.note-title').textContent;
-      const currentNoteId = currentNote.querySelector('.note-id').textContent;
-      var wantToDel = window.confirm('Are you sure you want to delete note with title '+currentTitle+' ?');
-      if(wantToDel){
+  //DELETE NOTE BTN
+  if (e.target.classList.contains("delBtn")) {
+    const currentNote = e.target.closest(".note");
+    const currentTitle = currentNote.querySelector(".note-title").textContent;
+    const currentNoteId = currentNote.querySelector(".note-id").textContent;
+    var wantToDel = window.confirm(
+      "Are you sure you want to delete note with title " + currentTitle + " ?"
+    );
+    if (wantToDel) {
       removeFromLocalStorage(Number(currentNoteId));
       currentNote.remove();
       executeOnce();
-      }
     }
-  });
-}
+  }
+});
 
 //INSERT NOTE INTO MODAL
 function insertIntoModal(title, body) {
@@ -102,6 +104,9 @@ function insertIntoModal(title, body) {
   var modalBody = parentElem.querySelector(".modal-body");
   modalTitle.textContent = title;
   modalBody.textContent = body;
+  
+  //TRIGGER MATERILIZE MODAL
+  var instances1 = M.Modal.init(elems1);
 }
 
 //PREVENT MULTIPLE CALLING OF FUNCTIONS
@@ -168,12 +173,12 @@ function insertIntoLocalStorage(note) {
 }
 
 //REMOVE FROM LOCAL STORAGE
-function removeFromLocalStorage(id){
+function removeFromLocalStorage(id) {
   const noteArr = getNotes();
-  noteArr.forEach((note , index) => {
-    if(note.id == id){
-      noteArr.splice(index,1);
+  noteArr.forEach((note, index) => {
+    if (note.id == id) {
+      noteArr.splice(index, 1);
     }
-    localStorage.setItem('mrNotekar.notes',JSON.stringify(noteArr));
+    localStorage.setItem("mrNotekar.notes", JSON.stringify(noteArr));
   });
 }
