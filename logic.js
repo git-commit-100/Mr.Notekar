@@ -1,14 +1,14 @@
 // console.log('Js file');
 
-//global selectors
+//GLOBAL SELECTORS
 const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
 const messageBox = document.getElementsByClassName("messageBox")[0];
 
-//note count
+//NOTE COUNT
 var noteCount = 0;
 
-//note class
+//NOTE CLASS
 class Note {
   constructor(title, body) {
     this.title = title;
@@ -18,37 +18,41 @@ class Note {
   }
 }
 
-//takeNote btn
+//TAKE NOTE AS INPUT
 let takeNote = document.getElementById("takeNote");
 takeNote.addEventListener("click", function () {
   const noteContent = document.getElementById("noteContent");
 
-  //validate notes
+  //VALIDATE NOTES
   if (noteTitle.value.length > 0 && noteContent.value.length > 0) {
     const newNote = new Note(noteTitle.value, noteContent.value);
+
+    //INSERTING NOTE INTO UI AND LOCAL STORAGE
     addNoteToUI(newNote);
-    //clear inputs on submit
+    insertIntoLocalStorage(newNote);
+
+    //CLEARING INPUT FIELD ON SUBMIT
     noteTitle.value = "";
     noteContent.value = "";
+    showAlertMsg("Your Note was Added", "success-msg");
     noteTitle.focus();
+
   } else if (noteTitle.value.length <= 0) {
     showAlertMsg("Please Add a Note Title", "noteAdd-msg");
     noteTitle.focus();
-    // noteTitle.value = 'Default Note';
   } else if (noteContent.value.length <= 0) {
     showAlertMsg("Please Add Note Content", "noteAdd-msg");
     noteContent.focus();
-    // noteContent.value = 'Default Note';
   }
 });
 
-//add note to ui
+//ADD NOTE TO UI
 function addNoteToUI(note) {
   noteCount += 1;
   const htmlofUiNote = document.createElement("div");
   htmlofUiNote.classList.add("note");
   htmlofUiNote.innerHTML = `
-    <span hidden>${note.id}</span>
+    <span hidden class='note-id'>${note.id}</span>
     <div class="col s12 m6 l4 card hoverable white">
     <div class="card-content">
       <span class="card-title note-title">${note.title}</span>
@@ -65,10 +69,10 @@ function addNoteToUI(note) {
     `;
 
   showNotesSection.appendChild(htmlofUiNote);
-  showAlertMsg("Your Note was Added", "success-msg");
 
-  //note card buttons : insert into modal and delete button
+  //NOTE CARD BUTTONS
   showNotesSection.addEventListener("click", function (e) {
+    //VIEW NOTE BTN
     if (e.target.classList.contains("viewBtn")) {
       const currentNote = e.target.closest(".note");
       var currentTitle = currentNote.querySelector(".note-title").textContent;
@@ -76,16 +80,19 @@ function addNoteToUI(note) {
       insertIntoModal(currentTitle, currentBody);
     }
 
-    //deleting a note
+    //DELETE NOTE BTN
     if (e.target.classList.contains("delBtn")) {
       const currentNote = e.target.closest(".note");
+      const currentNoteId = currentNote.querySelector('.note-id').textContent;
+      // console.log(currentNoteId);
+      removeFromLocalStorage(Number(currentNoteId));
       currentNote.remove();
       executeOnce();
     }
   });
 }
 
-//insert note into modal
+//INSERT NOTE INTO MODAL
 function insertIntoModal(title, body) {
   var parentElem = document.getElementById("modal99");
   var modalTitle = parentElem.querySelector(".modal-title");
@@ -94,20 +101,20 @@ function insertIntoModal(title, body) {
   modalBody.textContent = body;
 }
 
-// prevent multiple calling
+//PREVENT MULTIPLE CALLING OF FUNCTIONS
 var lastClick = 0;
 var delay = 500;
 function executeOnce() {
-  if(lastClick >= (Date.now() - delay)){
+  if (lastClick >= Date.now() - delay) {
     return;
   }
   lastClick = Date.now();
 
-  //main function calling
+  //CALLING FUNCTION
   showAlertMsg("Your Note was deleted", "delete-msg");
 }
 
-//message functionality
+//ALERT MESSAGE
 function showAlertMsg(msg, msgClass) {
   messageBox.style.display = "block";
   const msgDiv = document.createElement("div");
@@ -119,10 +126,51 @@ function showAlertMsg(msg, msgClass) {
 
   messageBox.appendChild(msgDiv);
 
-  //timeout for msgDiv
+  //TIMEOUT FOR MSGDIV
   setTimeout(function () {
     msgDiv.remove();
     messageBox.style.display = "none";
   }, 2000);
   noteTitle.focus();
+}
+
+//GET NOTES FROM LOCAL STORAGE
+function getNotes() {
+  const notesFromLs = localStorage.getItem("mrNotekar.notes");
+  let notesArr;
+  if (notesFromLs == null) {
+    notesArr = [];
+  } else {
+    notesArr = JSON.parse(notesFromLs);
+  }
+  return notesArr;
+}
+
+//DISPLAY NOTES IN UI WHEN WINDOW OPENS
+function displayNotes(note) {
+  const noteArr = getNotes();
+  noteArr.forEach((note) => {
+    addNoteToUI(note);
+  });
+}
+
+//RETRIEVE NOTES AS SOON AS PAGE LOADS
+document.addEventListener("DOMContentLoaded", displayNotes);
+
+//INSERT INTO LOCAL STORAGE
+function insertIntoLocalStorage(note) {
+  const notesArr = getNotes();
+  notesArr.push(note);
+  localStorage.setItem("mrNotekar.notes", JSON.stringify(notesArr));
+}
+
+//REMOVE FROM LOCAL STORAGE
+function removeFromLocalStorage(id){
+  const noteArr = getNotes();
+  noteArr.forEach((note , index) => {
+    if(note.id == id){
+      noteArr.splice(index,1);
+    }
+    localStorage.setItem('mrNotekar.notes',JSON.stringify(noteArr));
+  });
 }
