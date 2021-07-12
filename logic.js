@@ -83,11 +83,14 @@ function addNoteToUI(note) {
     //DELETE NOTE BTN
     if (e.target.classList.contains("delBtn")) {
       const currentNote = e.target.closest(".note");
+      const currentTitle = currentNote.querySelector('.note-title').textContent;
       const currentNoteId = currentNote.querySelector('.note-id').textContent;
-      // console.log(currentNoteId);
+      var wantToDel = window.confirm('Are you sure you want to delete note with title '+currentTitle+' ?');
+      if(wantToDel){
       removeFromLocalStorage(Number(currentNoteId));
       currentNote.remove();
       executeOnce();
+      }
     }
   });
 }
