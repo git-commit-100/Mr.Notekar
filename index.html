@@ -80,9 +80,10 @@
         <span class="card-title center">Add Your Notes Here !</span>
 
         <!-- messageBox -->
-        <div class="messageBoxWrap col s12 m12 l12">
-          <span class="message">Your Note was added</span>
-          <div class="messageBox"></div>
+        <div class="messageBoxWrap col s12 m12 l12" id="msgbox">
+          <div class="messageBox">
+            <!-- <div class="messageBody center"></div> -->
+          </div>
         </div>
 
         <!-- form -->
@@ -95,11 +96,10 @@
         <div class="input-field col s12 m12 l12">
           <span class="iconify prefix" data-icon="fluent:text-bullet-list-square-edit-20-regular"
             data-inline="true"></span>
-          <textarea type="text" class="materialize-textarea" id="noteContent" autocomplete="off"></textarea>
-          <label for="noteContent">Add Your Note Content Here</label>
+          <textarea type="text" placeholder="Add Your Content Here" style="border: none; border-bottom: 1px solid gray;" class="myTextArea" id="noteContent" autocomplete="off"></textarea>
         </div>
         <div class="btnWrap left" style="width:100%">
-          <a class="btn waves-effect">Take A Note
+          <a class="btn waves-effect" id="takeNote">Take A Note
             <span style="font-size: 20px;" class="iconify" data-icon="la:check-square-solid"
               data-inline="true"></span></a>
         </div>
@@ -108,41 +108,21 @@
   </div>
 
   <!-- show notes section -->
-  <div class="container row" id="showNotesSection">
-
-    <div class="col s12 m6 l4 card hoverable white">
-      <div class="card-content">
-        <span class="card-title">Note 1</span>
-        <div class="divider"></div>
-        <p class="truncate">Lorem ipsum dolor sittem velit. Illo,dignissimos quia</p>
-        <a href="#modal1" class="btn modal-trigger viewBtn col s6 l6 m6">View
-          <span style="font-size: 18px;" class="iconify" data-icon="carbon:view" data-inline="true"></span>
-        </a>
-        <a class="btn delBtn col s6 l6 m6">Delete
-          <span style="font-size: 18px;" class="iconify" data-icon="fluent:delete-20-regular" data-inline="true"></span>
-        </a>
-      </div>
-    </div>
-
-  </div>
+  <div class="container row" id="showNotesSection"></div>
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+<div class="modal-wrap">
+  <div id="modal99" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4>Note 1</h4>
+      <h4 class="modal-title">Note</h4>
       <div class="divider"></div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nobis accusantium iste similique autem asperiores
-        sed, optio amet voluptatibus, tempora sapiente exercitationem rerum excepturi hic ipsum rem id? Iure eveniet,
-        veniam corporis, nobis aliquid rerum consequuntur quaerat provident cumque voluptates beatae, saepe hic unde qui
-        possimus quam culpa delectus neque a dolore vitae quo? Quidem nobis vero aperiam cupiditate minima, eaque error
-        voluptatibus voluptatum.</p>
+      <p class="modal-body" style="margin-top: 1rem; white-space: pre-wrap;">Content</p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect btn-flat">Close
-        <span style="font-size: 16px;" class="iconify" data-icon="topcoat:cancel" data-inline="true"></span>
-      </a>
+      <a href="#!" class="modal-close waves-effect btn-flat">Close</a>
     </div>
   </div>
+</div>
 
 
 
@@ -153,7 +133,7 @@
       var instances = M.Sidenav.init(elems);
 
       var elems1 = document.querySelectorAll('.modal');
-      var instances1 = M.Modal.init(elems1);
+    var instances1 = M.Modal.init(elems1);
     });
   </script>
 </body>

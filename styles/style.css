@@ -59,16 +59,22 @@ nav .sidenav-trigger .iconify {
   left: 0;
 }
 
+.sidenav li a {
+  font-size: 18px;
+}
+
 .sidenav li a:hover, .sidenav li a:active {
   color: #0e4470;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+svg.iconify.prefix.active {
+  color: #0e4470;
 }
 
 #addNotesSection {
   /* label focus color */
   /* label underline focus color */
-  /* icon prefix color */
-  /* icon prefix focus color */
 }
 
 #addNotesSection .card.white {
@@ -92,15 +98,37 @@ nav .sidenav-trigger .iconify {
   color: #0e4470;
 }
 
-#addNotesSection .card.white .messageBoxWrap {
+#addNotesSection .card.white .messageBox {
   position: relative;
-  padding: 0.5rem;
   left: 20%;
   margin: 0.5rem 0;
   height: 20%;
   width: 60%;
-  background-color: #5fff87;
   display: none;
+}
+
+#addNotesSection .card.white .messageBox .noteAdd-msg {
+  padding: 0.5rem;
+  position: relative;
+  background-color: #a1d5ff;
+  color: black;
+  width: 100%;
+}
+
+#addNotesSection .card.white .messageBox .success-msg {
+  padding: 0.5rem;
+  position: relative;
+  background-color: #319b38;
+  color: white;
+  width: 100%;
+}
+
+#addNotesSection .card.white .messageBox .delete-msg {
+  padding: 0.5rem;
+  position: relative;
+  background-color: #ff4b41;
+  color: white;
+  width: 100%;
 }
 
 #addNotesSection .card.white .message {
@@ -140,21 +168,45 @@ nav .sidenav-trigger .iconify {
           box-shadow: 0 1px 0 0 #0e4470;
 }
 
-#addNotesSection .input-field textarea:focus {
-  border-bottom: 1px solid #0e4470;
+textarea.myTextArea {
+  margin-top: .5rem;
+}
+
+textarea.myTextArea::-webkit-input-placeholder {
+  color: gray;
+}
+
+textarea.myTextArea:-ms-input-placeholder {
+  color: gray;
+}
+
+textarea.myTextArea::-ms-input-placeholder {
+  color: gray;
+}
+
+textarea.myTextArea::placeholder {
+  color: gray;
+}
+
+textarea.myTextArea:focus, textarea.myTextArea:active {
+  border: none !important;
+  outline: none !important;
+  border-bottom: 1px solid #0e4470 !important;
   -webkit-box-shadow: 0 1px 0 0 #0e4470;
           box-shadow: 0 1px 0 0 #0e4470;
 }
 
-#addNotesSection .input-field .prefix {
+/* icon prefix color */
+.input-field .prefix {
   color: gray;
 }
 
-#addNotesSection .input-field .prefix.active {
+/* icon prefix focus color */
+.input-field .prefix.active {
   color: #0e4470;
 }
 
-#addNotesSection .btnWrap {
+.btnWrap {
   position: relative;
   top: 0.5rem;
   bottom: 1rem;
@@ -162,7 +214,7 @@ nav .sidenav-trigger .iconify {
   overflow: hidden;
 }
 
-#addNotesSection .btnWrap .btn {
+.btnWrap .btn {
   z-index: 0;
   width: 25%;
   font-size: 16px;
@@ -176,27 +228,27 @@ nav .sidenav-trigger .iconify {
   overflow: hidden;
 }
 
-#addNotesSection .btnWrap .btn:hover, #addNotesSection .btnWrap .btn:active {
+.btnWrap .btn:hover, .btnWrap .btn:active {
   background-color: #319b38;
   color: white;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
 
-#addNotesSection .btnWrap .btn .iconify {
+.btnWrap .btn .iconify {
   font-size: 18px;
   font-weight: 600;
 }
 
 @media only screen and (max-width: 841px) {
-  #addNotesSection .btnWrap .btn {
+  .btnWrap .btn {
     width: 40%;
     overflow: hidden;
   }
 }
 
 @media only screen and (max-width: 470px) {
-  #addNotesSection .btnWrap .btn {
+  .btnWrap .btn {
     width: 60%;
     overflow: hidden;
   }
@@ -210,7 +262,7 @@ nav .sidenav-trigger .iconify {
   font-weight: 500;
 }
 
-#showNotesSection .card .divider + p {
+#showNotesSection .card .divider + p.truncate {
   margin-top: 0.5rem;
 }
 
@@ -237,15 +289,15 @@ nav .sidenav-trigger .iconify {
 }
 
 #showNotesSection .card a.btn.delBtn {
-  color: #f32013;
-  border: 1px solid #f32013;
+  color: #ff4b41;
+  border: 1px solid #ff4b41;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 #showNotesSection .card a.btn.delBtn:hover {
   color: white;
-  background-color: #f32013;
+  background-color: #ff4b41;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
