@@ -324,4 +324,8 @@ textarea.myTextArea:focus, textarea.myTextArea:active {
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
+
+.hidden {
+  display: none !important;
+}
 /*# sourceMappingURL=style.css.map */

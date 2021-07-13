@@ -5,6 +5,7 @@ const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
 const messageBox = document.getElementsByClassName("messageBox")[0];
 const elems1 = document.querySelectorAll(".modal");
+const noNotes = document.getElementById('noNotes');
 
 //NOTE COUNT
 var noteCount = 0;
@@ -67,7 +68,7 @@ function addNoteToUI(note) {
     </div>
   </div>
     `;
-
+  noNotes.classList.add('hidden');
   showNotesSection.appendChild(htmlofUiNote);
 }
 
@@ -147,6 +148,8 @@ function getNotes() {
   const notesFromLs = localStorage.getItem("mrNotekar.notes");
   let notesArr;
   if (notesFromLs == null) {
+
+    //NO NOTES FROM LOCAL STORAGE 
     notesArr = [];
   } else {
     notesArr = JSON.parse(notesFromLs);
@@ -173,12 +176,15 @@ function insertIntoLocalStorage(note) {
 }
 
 //REMOVE FROM LOCAL STORAGE
-function removeFromLocalStorage(id) {
+function removeFromLocalStorage(noteId) {
   const noteArr = getNotes();
   noteArr.forEach((note, index) => {
-    if (note.id == id) {
+    if (note.id == noteId) {
       noteArr.splice(index, 1);
     }
     localStorage.setItem("mrNotekar.notes", JSON.stringify(noteArr));
   });
 }
+
+
+
