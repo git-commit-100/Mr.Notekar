@@ -1,11 +1,25 @@
 // console.log('Js file');
 
+//LOADING GIF
+const loadingGif = document.querySelector('.loaderGif');
+window.addEventListener('load',function() {
+  this.setTimeout(removeLoading , 2000);
+});
+
+function removeLoading() {
+  loadingGif.classList.add('hidden');
+}
+
 //GLOBAL SELECTORS
 const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
 const messageBox = document.getElementsByClassName("messageBox")[0];
 const elems1 = document.querySelectorAll(".modal");
 const noNotes = document.getElementById('noNotes');
+var parentElem = document.getElementById("modal99");
+var modalTitle = parentElem.querySelector(".modal-title");
+var modalBody = parentElem.querySelector(".modal-body");
+
 
 //NOTE COUNT
 var noteCount = 0;
@@ -100,12 +114,9 @@ showNotesSection.addEventListener("click", function (e) {
 
 //INSERT NOTE INTO MODAL
 function insertIntoModal(title, body) {
-  var parentElem = document.getElementById("modal99");
-  var modalTitle = parentElem.querySelector(".modal-title");
-  var modalBody = parentElem.querySelector(".modal-body");
   modalTitle.textContent = title;
   modalBody.textContent = body;
-  
+
   //TRIGGER MATERILIZE MODAL
   var instances1 = M.Modal.init(elems1);
 }
@@ -185,6 +196,4 @@ function removeFromLocalStorage(noteId) {
     localStorage.setItem("mrNotekar.notes", JSON.stringify(noteArr));
   });
 }
-
-
 

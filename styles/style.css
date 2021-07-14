@@ -328,4 +328,44 @@ textarea.myTextArea:focus, textarea.myTextArea:active {
 .hidden {
   display: none !important;
 }
+
+.loaderGif {
+  height: 100% !important;
+  width: 100% !important;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loaderGif.hidden {
+  -webkit-animation: fadeOut 1s;
+          animation: fadeOut 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 /*# sourceMappingURL=style.css.map */

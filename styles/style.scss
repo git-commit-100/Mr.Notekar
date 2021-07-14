@@ -297,3 +297,28 @@ textarea.myTextArea:focus , textarea.myTextArea:active{
 .hidden{
   display: none !important;
 }
+
+.loaderGif{
+  height: 100% !important;
+  width: 100% !important;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loaderGif.hidden{
+  animation: fadeOut 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
