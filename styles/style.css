@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -169,7 +173,7 @@ svg.iconify.prefix.active {
 }
 
 textarea.myTextArea {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 textarea.myTextArea::-webkit-input-placeholder {
@@ -188,7 +192,8 @@ textarea.myTextArea::placeholder {
   color: gray;
 }
 
-textarea.myTextArea:focus, textarea.myTextArea:active {
+textarea.myTextArea:focus,
+textarea.myTextArea:active {
   border: none !important;
   outline: none !important;
   border-bottom: 1px solid #0e4470 !important;
@@ -293,6 +298,7 @@ textarea.myTextArea:focus, textarea.myTextArea:active {
   border: 1px solid #ff4b41;
   -webkit-box-shadow: none;
           box-shadow: none;
+  overflow: hidden;
 }
 
 #showNotesSection .card a.btn.delBtn:hover {
@@ -302,27 +308,39 @@ textarea.myTextArea:focus, textarea.myTextArea:active {
   transition: all 250ms ease-in-out;
 }
 
-.modal h4 {
+.modal-wrap {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0 !important;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(33, 33, 33, 0.2);
+}
+
+.modal-wrap .popup {
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #212121;
+  width: 80vw;
+  max-height: 50vh;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  overflow: auto;
+}
+
+.modal-wrap .popup-content h4 {
   font-weight: 500;
 }
 
-.modal p {
+.modal-wrap .popup-content p {
   margin-top: 0.5rem;
-}
-
-.modal a.modal-close {
-  margin-right: 1rem !important;
-  margin-bottom: 0.5rem !important;
-  text-transform: none;
-  background-color: white;
-  border: 1px solid #0e4470;
-}
-
-.modal a.modal-close:hover, .modal a.modal-close:active {
-  color: white;
-  background-color: #0e4470;
-  -webkit-transition: all 250ms ease-in-out;
-  transition: all 250ms ease-in-out;
+  font-size: 20px;
 }
 
 .hidden {
