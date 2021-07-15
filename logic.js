@@ -6,6 +6,12 @@ window.addEventListener('load',function() {
   this.setTimeout(removeLoading , 2000);
 });
 
+window.onbeforeunload = 
+function scrollBodyTop() {
+ //SCROLL TO TOP ON REFRESH
+ window.scrollTo(0, -1);
+}
+
 function removeLoading() {
   loadingGif.classList.add('hidden');
 }
@@ -19,6 +25,7 @@ const messageBox = document.getElementsByClassName("messageBox")[0];
 const noNotes = document.getElementById('noNotes');
 var modalWrap = document.querySelector('.modal-wrap');
 var parentElem = document.getElementById("popup");
+const popupCont = parentElem.querySelector('.popup-content');
 var modalTitle = parentElem.querySelector(".popup-title");
 var modalBody = parentElem.querySelector(".popup-body");
 
@@ -75,7 +82,7 @@ function addNoteToUI(note) {
       <span class="card-title note-title">${note.title}</span>
       <div class="divider"></div>
       <p class="truncate note-body">${note.body}</p>
-      <a href="#" class="btn viewBtn col s6 l6 m6">View
+      <a class="btn viewBtn col s6 l6 m6">View
         <span style="font-size: 18px;" class="iconify" data-icon="carbon:view" data-inline="true"></span>
       </a>
       <a class="btn delBtn col s6 l6 m6">Delete
@@ -136,6 +143,7 @@ function insertIntoModal(title, body) {
   // var instances1 = M.Modal.init(elems1);
   modalWrap.style.display = 'block';
   mainBody.style.overflow = 'hidden';
+  popupCont.scrollIntoView({behavior: "smooth"});
 }
 
 
@@ -170,7 +178,7 @@ function showAlertMsg(msg, msgClass) {
     msgDiv.remove();
     messageBox.style.display = "none";
   }, 2000);
-  noteTitle.focus();
+  window.scrollTo(0,0);
 }
 
 //GET NOTES FROM LOCAL STORAGE

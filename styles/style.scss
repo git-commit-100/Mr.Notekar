@@ -11,6 +11,10 @@ $transition: all 250ms ease-in-out;
 
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 
+html{
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -312,17 +316,19 @@ textarea.myTextArea:active {
     padding: 1rem;
     background-color: white;
     border: 1px solid $dark;
-    width: 80%;
+    width: 80vw;
     // width: min-content;
     // height: min-content;
-    max-height: 50%;
+    max-height: 50vh;
     height: fit-content;
     position: absolute;
     top: 20%;
     left: 10%;
     overflow: auto;
   }
+  .popup-content{
   h4 {
+    // margin-top: -.5rem;
     font-weight: 500;
   }
   p {
@@ -370,6 +376,7 @@ textarea.myTextArea:active {
   //     }
   //   }
   // }
+  }
 }
 
 .hidden {
