@@ -79,10 +79,9 @@ nav {
   }
 }
 
-svg.iconify.prefix.active{
+svg.iconify.prefix.active {
   color: $darkBlue;
 }
-
 
 #addNotesSection {
   .card.white {
@@ -110,21 +109,21 @@ svg.iconify.prefix.active{
       // background-color: $darkBlue;
       // color: white;
       display: none;
-      .noteAdd-msg{
+      .noteAdd-msg {
         padding: 0.5rem;
         position: relative;
         background-color: $primary;
         color: black;
         width: 100%;
       }
-      .success-msg{
+      .success-msg {
         padding: 0.5rem;
         position: relative;
         background-color: $darkGreen;
         color: white;
         width: 100%;
       }
-      .delete-msg{
+      .delete-msg {
         padding: 0.5rem;
         position: relative;
         background-color: $danger;
@@ -168,14 +167,15 @@ svg.iconify.prefix.active{
   }
 }
 
-textarea.myTextArea{
-  margin-top: .5rem;
-  &::placeholder{
+textarea.myTextArea {
+  margin-top: 0.5rem;
+  &::placeholder {
     color: gray;
   }
 }
 
-textarea.myTextArea:focus , textarea.myTextArea:active{
+textarea.myTextArea:focus,
+textarea.myTextArea:active {
   border: none !important;
   outline: none !important;
   border-bottom: 1px solid $darkBlue !important;
@@ -186,7 +186,7 @@ textarea.myTextArea:focus , textarea.myTextArea:active{
   color: gray;
 }
 /* icon prefix focus color */
-.input-field .prefix.active{
+.input-field .prefix.active {
   color: $darkBlue;
 }
 
@@ -232,6 +232,7 @@ textarea.myTextArea:focus , textarea.myTextArea:active{
 }
 
 #showNotesSection {
+  // padding-bottom: 4rem;
   .card {
     padding-bottom: 3rem;
     .card-title {
@@ -261,6 +262,7 @@ textarea.myTextArea:focus , textarea.myTextArea:active{
         color: $danger;
         border: 1px solid $danger;
         box-shadow: none;
+        overflow: hidden;
         &:hover {
           color: white;
           background-color: $danger;
@@ -272,33 +274,109 @@ textarea.myTextArea:focus , textarea.myTextArea:active{
 }
 
 // modal
-.modal {
+// .modal {
+//   h4 {
+//     font-weight: 500;
+//   }
+//   p {
+//     margin-top: 0.5rem;
+//   }
+//   a.modal-close {
+//     margin-right: 1rem !important;
+//     margin-bottom: 0.5rem !important;
+//     text-transform: none;
+//     background-color: white;
+//     border: 1px solid $darkBlue;
+//     &:hover,
+//     &:active {
+//       color: white;
+//       background-color: $darkBlue;
+//       transition: $transition;
+//     }
+//   }
+// }
+
+//custom modal
+.modal-wrap {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0 !important;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  // overflow: auto;
+  background-color: rgba($dark, 0.2);
+  .popup {
+    // margin: 5%;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid $dark;
+    width: 80%;
+    // width: min-content;
+    // height: min-content;
+    max-height: 50%;
+    height: fit-content;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    overflow: auto;
+  }
   h4 {
     font-weight: 500;
   }
   p {
     margin-top: 0.5rem;
+    font-size: 20px;
   }
-  a.modal-close {
-    margin-right: 1rem !important;
-    margin-bottom: 0.5rem !important;
-    text-transform: none;
-    background-color: white;
-    border: 1px solid $darkBlue;
-    &:hover,
-    &:active {
-      color: white;
-      background-color: $darkBlue;
-      transition: $transition;
-    }
-  }
+  // .popup-footer {
+  //   position: inherit;
+  //   // top: 25%;
+  //   a.close {
+  //     position: relative;
+  //     top: 50%;
+  //     left: 93%;
+  //     @media only screen and (max-width: 1107px) {
+  //       left: 90%;
+  //     }
+  //     @media only screen and (max-width: 770px) {
+  //       left: 87%;
+  //     }
+  //     @media only screen and (max-width: 770px) {
+  //       left: 84%;
+  //     }
+  //     @media only screen and (max-width: 490px) {
+  //       left: 82%;
+  //     }
+  //     @media only screen and (max-width: 490px) {
+  //       left: 80%;
+  //     }
+  //     @media only screen and (max-width: 384px) {
+  //       left: 78% !important;
+  //     }
+  //     @media only screen and (max-width: 344px) {
+  //       left: 75% !important;
+  //     }
+  //     overflow: none;
+  //     text-transform: none;
+  //     background-color: white;
+  //     border: 1px solid $darkBlue;
+  //     &:hover,
+  //     &:active {
+  //       cursor: pointer;
+  //       color: white;
+  //       background-color: $darkBlue;
+  //       transition: $transition;
+  //     }
+  //   }
+  // }
 }
 
-.hidden{
+.hidden {
   display: none !important;
 }
 
-.loaderGif{
+.loaderGif {
   height: 100% !important;
   width: 100% !important;
   position: fixed;
@@ -311,7 +389,7 @@ textarea.myTextArea:focus , textarea.myTextArea:active{
   align-items: center;
 }
 
-.loaderGif.hidden{
+.loaderGif.hidden {
   animation: fadeOut 1s;
   animation-fill-mode: forwards;
 }

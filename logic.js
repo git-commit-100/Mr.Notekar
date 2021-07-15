@@ -11,14 +11,16 @@ function removeLoading() {
 }
 
 //GLOBAL SELECTORS
+const mainBody = document.querySelector('body');
 const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
 const messageBox = document.getElementsByClassName("messageBox")[0];
-const elems1 = document.querySelectorAll(".modal");
+// const elems1 = document.querySelectorAll(".modal");
 const noNotes = document.getElementById('noNotes');
-var parentElem = document.getElementById("modal99");
-var modalTitle = parentElem.querySelector(".modal-title");
-var modalBody = parentElem.querySelector(".modal-body");
+var modalWrap = document.querySelector('.modal-wrap');
+var parentElem = document.getElementById("popup");
+var modalTitle = parentElem.querySelector(".popup-title");
+var modalBody = parentElem.querySelector(".popup-body");
 
 
 //NOTE COUNT
@@ -73,7 +75,7 @@ function addNoteToUI(note) {
       <span class="card-title note-title">${note.title}</span>
       <div class="divider"></div>
       <p class="truncate note-body">${note.body}</p>
-      <a href="#modal99" class="btn modal-trigger viewBtn col s6 l6 m6">View
+      <a href="#" class="btn viewBtn col s6 l6 m6">View
         <span style="font-size: 18px;" class="iconify" data-icon="carbon:view" data-inline="true"></span>
       </a>
       <a class="btn delBtn col s6 l6 m6">Delete
@@ -84,6 +86,19 @@ function addNoteToUI(note) {
     `;
   noNotes.classList.add('hidden');
   showNotesSection.appendChild(htmlofUiNote);
+}
+
+// //POPUP / MODAL CLOSE FUNCTIONALITY
+// const closeBtn = document.querySelector('.close');
+// closeBtn.addEventListener('click',function(){
+//   modalWrap.style.display = 'none';
+// });
+
+window.onclick = function(e){
+  if(e.target == modalWrap){
+    modalWrap.style.display = 'none';
+    mainBody.style.overflow = '';
+  }
 }
 
 //NOTE CARD BUTTONS
@@ -118,8 +133,12 @@ function insertIntoModal(title, body) {
   modalBody.textContent = body;
 
   //TRIGGER MATERILIZE MODAL
-  var instances1 = M.Modal.init(elems1);
+  // var instances1 = M.Modal.init(elems1);
+  modalWrap.style.display = 'block';
+  mainBody.style.overflow = 'hidden';
 }
+
+
 
 //PREVENT MULTIPLE CALLING OF FUNCTIONS
 var lastClick = 0;
