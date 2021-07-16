@@ -62,11 +62,11 @@ takeNote.addEventListener("click", function () {
     showAlertMsg("Your Note was Added", "success-msg");
     noteTitle.focus();
   } else if (noteTitle.value.length <= 0) {
-    showAlertMsg("Please Add a Note Title", "noteAdd-msg");
     noteTitle.focus();
+    showAlertMsg("Please Add a Note Title", "noteAdd-msg");
   } else if (noteContent.value.length <= 0) {
+    noteTitle.focus();
     showAlertMsg("Please Add Note Content", "noteAdd-msg");
-    noteContent.focus();
   }
 });
 
