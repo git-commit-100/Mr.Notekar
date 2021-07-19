@@ -317,7 +317,7 @@ textarea.myTextArea:active {
   z-index: 1;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(33, 33, 33, 0.2);
+  background-color: rgba(33, 33, 33, 0.5);
 }
 
 .modal-wrap .popup {
