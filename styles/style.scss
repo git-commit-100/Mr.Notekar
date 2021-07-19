@@ -312,6 +312,7 @@ textarea.myTextArea:active {
   width: 100vw;
   // overflow: auto;
   background-color: rgba($dark, 0.5);
+  backdrop-filter: blur(2px);
   .popup {
     // margin: 5%;
     padding: 1rem;

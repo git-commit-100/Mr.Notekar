@@ -21,7 +21,7 @@ const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
 const messageBox = document.getElementsByClassName("messageBox")[0];
 var modalWrap = document.querySelector(".modal-wrap");
-const noNotes = document.getElementById('noNotes');
+const noNotes = document.getElementById("noNotes");
 var parentElem = document.getElementById("popup");
 const popupCont = parentElem.querySelector(".popup-content");
 var modalTitle = parentElem.querySelector(".popup-title");
@@ -50,7 +50,7 @@ takeNote.addEventListener("click", function () {
     const newNote = new Note(noteTitle.value, noteContent.value);
 
     //INSERTING NOTE INTO UI AND LOCAL STORAGE
-    noNotes.style.display = 'none';
+    noNotes.style.display = "none";
     addNoteToUI(newNote);
     insertIntoLocalStorage(newNote);
 
@@ -82,10 +82,10 @@ function addNoteToUI(note) {
       <div class="divider"></div>
       <p class="truncate note-body">${note.body}</p>
       <a class="btn viewBtn col s6 l6 m6">View
-        <span style="font-size: 18px;" class="iconify" data-icon="carbon:view" data-inline="true"></span>
+        <span style="font-size: 18px;" class="iconify viewIcon" data-icon="carbon:view" data-inline="true"></span>
       </a>
       <a class="btn delBtn col s6 l6 m6">Delete
-        <span style="font-size: 18px;" class="iconify" data-icon="fluent:delete-20-regular" data-inline="true"></span>
+        <span style="font-size: 18px;" class="iconify delIcon" data-icon="fluent:delete-20-regular" data-inline="true"></span>
       </a>
     </div>
   </div>
@@ -93,7 +93,7 @@ function addNoteToUI(note) {
   showNotesSection.appendChild(htmlofUiNote);
 }
 
-
+//MODAL OPEN
 window.onclick = function (e) {
   if (e.target == modalWrap) {
     modalWrap.style.display = "none";
@@ -104,7 +104,10 @@ window.onclick = function (e) {
 //NOTE CARD BUTTONS
 showNotesSection.addEventListener("click", function (e) {
   //VIEW NOTE BTN
-  if (e.target.classList.contains("viewBtn")) {
+  if (
+    e.target.classList.contains("viewBtn") ||
+    e.target.classList.contains("viewIcon")
+  ) {
     const currentNote = e.target.closest(".note");
     var currentTitle = currentNote.querySelector(".note-title").textContent;
     var currentBody = currentNote.querySelector(".note-body").textContent;
@@ -112,7 +115,10 @@ showNotesSection.addEventListener("click", function (e) {
   }
 
   //DELETE NOTE BTN
-  if (e.target.classList.contains("delBtn")) {
+  if (
+    e.target.classList.contains("delBtn") ||
+    e.target.classList.contains("delIcon")
+  ) {
     const currentNote = e.target.closest(".note");
     const currentTitle = currentNote.querySelector(".note-title").textContent;
     const currentNoteId = currentNote.querySelector(".note-id").textContent;
@@ -132,12 +138,18 @@ function insertIntoModal(title, body) {
   modalTitle.textContent = title;
   modalBody.textContent = body;
 
-  //TRIGGER MATERILIZE MODAL
-  // var instances1 = M.Modal.init(elems1);
+  //TRIGGER MODAL
   modalWrap.style.display = "block";
   mainBody.style.overflow = "hidden";
   popupCont.scrollIntoView({ behavior: "smooth" });
 }
+//MODAL CLOSE
+window.onclick = function (e) {
+  if (e.target == modalWrap) {
+    modalWrap.style.display = "none";
+    mainBody.style.overflow = "";
+  }
+};
 
 //PREVENT MULTIPLE CALLING OF FUNCTIONS
 var lastClick = 0;
@@ -181,7 +193,7 @@ function getNotes() {
     notesArr = [];
   } else {
     notesArr = JSON.parse(notesFromLs);
-    noNotes.style.display = 'none';
+    noNotes.style.display = "none";
   }
   return notesArr;
 }
@@ -189,8 +201,8 @@ function getNotes() {
 //DISPLAY NOTES IN UI WHEN WINDOW OPENS
 function displayNotes(note) {
   const noteArr = getNotes();
-  if(noteArr == null || noteArr.length == 0){
-    noNotes.style.display = '';
+  if (noteArr == null || noteArr.length == 0) {
+    noNotes.style.display = "";
   }
   noteArr.forEach((note) => {
     addNoteToUI(note);
@@ -210,9 +222,9 @@ function insertIntoLocalStorage(note) {
 //REMOVE FROM LOCAL STORAGE
 function removeFromLocalStorage(noteId) {
   const noteArr = getNotes();
-  if(noteArr.length <= 1){
+  if (noteArr.length <= 1) {
     //MEANS ONLY 1 NOTE IS PRESENT , WHEN DELETED SHOW NO NOTES
-    noNotes.style.display = '';
+    noNotes.style.display = "";
   }
   noteArr.forEach((note, index) => {
     if (note.id == noteId) {
