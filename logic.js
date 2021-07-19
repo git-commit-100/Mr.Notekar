@@ -1,34 +1,31 @@
 // console.log('Js file');
 
 //LOADING GIF
-const loadingGif = document.querySelector('.loaderGif');
-window.addEventListener('load',function() {
-  this.setTimeout(removeLoading , 2000);
+const loadingGif = document.querySelector(".loaderGif");
+window.addEventListener("load", function () {
+  this.setTimeout(removeLoading, 2000);
 });
 
-window.onbeforeunload = 
-function scrollBodyTop() {
- //SCROLL TO TOP ON REFRESH
- window.scrollTo(0, -1);
-}
+window.onbeforeunload = function scrollBodyTop() {
+  //SCROLL TO TOP ON REFRESH
+  window.scrollTo(0, -1);
+};
 
 function removeLoading() {
-  loadingGif.classList.add('hidden');
+  loadingGif.classList.add("hidden");
 }
 
 //GLOBAL SELECTORS
-const mainBody = document.querySelector('body');
+const mainBody = document.querySelector("body");
 const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
 const messageBox = document.getElementsByClassName("messageBox")[0];
-// const elems1 = document.querySelectorAll(".modal");
+var modalWrap = document.querySelector(".modal-wrap");
 const noNotes = document.getElementById('noNotes');
-var modalWrap = document.querySelector('.modal-wrap');
 var parentElem = document.getElementById("popup");
-const popupCont = parentElem.querySelector('.popup-content');
+const popupCont = parentElem.querySelector(".popup-content");
 var modalTitle = parentElem.querySelector(".popup-title");
 var modalBody = parentElem.querySelector(".popup-body");
-
 
 //NOTE COUNT
 var noteCount = 0;
@@ -53,14 +50,15 @@ takeNote.addEventListener("click", function () {
     const newNote = new Note(noteTitle.value, noteContent.value);
 
     //INSERTING NOTE INTO UI AND LOCAL STORAGE
+    noNotes.style.display = 'none';
     addNoteToUI(newNote);
     insertIntoLocalStorage(newNote);
 
     //CLEARING INPUT FIELD ON SUBMIT
     noteTitle.value = "";
     noteContent.value = "";
-    showAlertMsg("Your Note was Added", "success-msg");
     noteTitle.focus();
+    showAlertMsg("Your Note was Added", "success-msg");
   } else if (noteTitle.value.length <= 0) {
     noteTitle.focus();
     showAlertMsg("Please Add a Note Title", "noteAdd-msg");
@@ -73,6 +71,7 @@ takeNote.addEventListener("click", function () {
 //ADD NOTE TO UI
 function addNoteToUI(note) {
   noteCount += 1;
+  //NOTES ARE AVAILABLE , SHOW IN UI
   const htmlofUiNote = document.createElement("div");
   htmlofUiNote.classList.add("note");
   htmlofUiNote.innerHTML = `
@@ -91,22 +90,16 @@ function addNoteToUI(note) {
     </div>
   </div>
     `;
-  noNotes.classList.add('hidden');
   showNotesSection.appendChild(htmlofUiNote);
 }
 
-// //POPUP / MODAL CLOSE FUNCTIONALITY
-// const closeBtn = document.querySelector('.close');
-// closeBtn.addEventListener('click',function(){
-//   modalWrap.style.display = 'none';
-// });
 
-window.onclick = function(e){
-  if(e.target == modalWrap){
-    modalWrap.style.display = 'none';
-    mainBody.style.overflow = '';
+window.onclick = function (e) {
+  if (e.target == modalWrap) {
+    modalWrap.style.display = "none";
+    mainBody.style.overflow = "";
   }
-}
+};
 
 //NOTE CARD BUTTONS
 showNotesSection.addEventListener("click", function (e) {
@@ -141,12 +134,10 @@ function insertIntoModal(title, body) {
 
   //TRIGGER MATERILIZE MODAL
   // var instances1 = M.Modal.init(elems1);
-  modalWrap.style.display = 'block';
-  mainBody.style.overflow = 'hidden';
-  popupCont.scrollIntoView({behavior: "smooth"});
+  modalWrap.style.display = "block";
+  mainBody.style.overflow = "hidden";
+  popupCont.scrollIntoView({ behavior: "smooth" });
 }
-
-
 
 //PREVENT MULTIPLE CALLING OF FUNCTIONS
 var lastClick = 0;
@@ -178,7 +169,7 @@ function showAlertMsg(msg, msgClass) {
     msgDiv.remove();
     messageBox.style.display = "none";
   }, 2000);
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
 //GET NOTES FROM LOCAL STORAGE
@@ -186,11 +177,11 @@ function getNotes() {
   const notesFromLs = localStorage.getItem("mrNotekar.notes");
   let notesArr;
   if (notesFromLs == null) {
-
-    //NO NOTES FROM LOCAL STORAGE 
+    //NO NOTES FROM LOCAL STORAGE
     notesArr = [];
   } else {
     notesArr = JSON.parse(notesFromLs);
+    noNotes.style.display = 'none';
   }
   return notesArr;
 }
@@ -198,6 +189,9 @@ function getNotes() {
 //DISPLAY NOTES IN UI WHEN WINDOW OPENS
 function displayNotes(note) {
   const noteArr = getNotes();
+  if(noteArr == null || noteArr.length == 0){
+    noNotes.style.display = '';
+  }
   noteArr.forEach((note) => {
     addNoteToUI(note);
   });
@@ -216,6 +210,10 @@ function insertIntoLocalStorage(note) {
 //REMOVE FROM LOCAL STORAGE
 function removeFromLocalStorage(noteId) {
   const noteArr = getNotes();
+  if(noteArr.length <= 1){
+    //MEANS ONLY 1 NOTE IS PRESENT , WHEN DELETED SHOW NO NOTES
+    noNotes.style.display = '';
+  }
   noteArr.forEach((note, index) => {
     if (note.id == noteId) {
       noteArr.splice(index, 1);
@@ -223,4 +221,3 @@ function removeFromLocalStorage(noteId) {
     localStorage.setItem("mrNotekar.notes", JSON.stringify(noteArr));
   });
 }
-

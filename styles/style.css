@@ -260,6 +260,7 @@ textarea.myTextArea:active {
 }
 
 #showNotesSection .card {
+  margin-top: -1rem;
   padding-bottom: 3rem;
 }
 
