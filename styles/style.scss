@@ -314,27 +314,29 @@ textarea.myTextArea:active {
   background-color: rgba($dark, 0.5);
   backdrop-filter: blur(2px);
   .popup {
-    // margin: 5%;
-    padding: 1rem;
+    // padding: 1rem;
     background-color: white;
     border: 1px solid $dark;
     width: 80vw;
-    // width: min-content;
-    // height: min-content;
-    max-height: 50vh;
-    height: fit-content;
+    height: 60vh;
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 10%;
     overflow: auto;
   }
   .popup-content{
-  h4 {
-    // margin-top: -.5rem;
+  .popup-title {
+    margin: 0;
+    font-size: 30px;
+    padding: 1.5rem 2rem;
     font-weight: 500;
+    color: rgba($dark,.6);
   }
+    //MODAL CONTENT
   p {
-    margin-top: 0.5rem;
+    // margin-top: 0.5rem;
+    font-weight: 400;
+    padding: 1rem 2rem;
     font-size: 20px;
   }
   // .popup-footer {

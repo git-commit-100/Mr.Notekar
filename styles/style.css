@@ -323,26 +323,27 @@ textarea.myTextArea:active {
 }
 
 .modal-wrap .popup {
-  padding: 1rem;
   background-color: white;
   border: 1px solid #212121;
   width: 80vw;
-  max-height: 50vh;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 60vh;
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 10%;
   overflow: auto;
 }
 
-.modal-wrap .popup-content h4 {
+.modal-wrap .popup-content .popup-title {
+  margin: 0;
+  font-size: 30px;
+  padding: 1.5rem 2rem;
   font-weight: 500;
+  color: rgba(33, 33, 33, 0.6);
 }
 
 .modal-wrap .popup-content p {
-  margin-top: 0.5rem;
+  font-weight: 400;
+  padding: 1rem 2rem;
   font-size: 20px;
 }
 
