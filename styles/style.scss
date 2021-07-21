@@ -110,6 +110,14 @@ svg.iconify.prefix.active {
       border: 1px solid $darkBlue;
       padding: 1px 1.5rem 1px 1.25rem;
       border-radius: 8px;
+      transition: $transition;
+
+      &:hover , &:active{
+        font-size: 14px;
+        box-shadow: 2px 2px rgba($darkBlue, 0.8);
+        // background-color: $primary;
+        // color: white;
+      }
     }
 
     .messageBox {
