@@ -103,18 +103,14 @@ svg.iconify.prefix.active {
 }
 
 #addNotesSection .card.white #noteCount {
-  font-size: 12px;
   border: 1px solid #0e4470;
   padding: 1px 1.5rem 1px 1.25rem;
   border-radius: 8px;
-  -webkit-transition: all 250ms ease-in-out;
-  transition: all 250ms ease-in-out;
-}
-
-#addNotesSection .card.white #noteCount:hover, #addNotesSection .card.white #noteCount:active {
   font-size: 14px;
   -webkit-box-shadow: 2px 2px rgba(14, 68, 112, 0.8);
           box-shadow: 2px 2px rgba(14, 68, 112, 0.8);
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 #addNotesSection .card.white .messageBox {
@@ -231,7 +227,6 @@ textarea.myTextArea:active {
   top: 0.5rem;
   bottom: 1rem;
   left: 2rem;
-  overflow: hidden;
 }
 
 .btnWrap .btn {
@@ -242,9 +237,7 @@ textarea.myTextArea:active {
   background-color: transparent;
   color: #319b38;
   border: 1px solid #319b38;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-radius: 25px 0 25px 0;
+  border-radius: 0 25px 0 25px;
   overflow: hidden;
 }
 
@@ -298,8 +291,6 @@ textarea.myTextArea:active {
 #showNotesSection .card a.btn.viewBtn {
   color: #0e4470;
   border: 1px solid #0e4470;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 #showNotesSection .card a.btn.viewBtn:hover {
@@ -312,8 +303,6 @@ textarea.myTextArea:active {
 #showNotesSection .card a.btn.delBtn {
   color: #ff4b41;
   border: 1px solid #ff4b41;
-  -webkit-box-shadow: none;
-          box-shadow: none;
   overflow: hidden;
 }
 

@@ -106,18 +106,12 @@ svg.iconify.prefix.active {
     }
 
     #noteCount{
-      font-size: 12px;
       border: 1px solid $darkBlue;
       padding: 1px 1.5rem 1px 1.25rem;
       border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 2px 2px rgba($darkBlue, 0.8);
       transition: $transition;
-
-      &:hover , &:active{
-        font-size: 14px;
-        box-shadow: 2px 2px rgba($darkBlue, 0.8);
-        // background-color: $primary;
-        // color: white;
-      }
     }
 
     .messageBox {
@@ -215,7 +209,7 @@ textarea.myTextArea:active {
   top: 0.5rem;
   bottom: 1rem;
   left: 2rem;
-  overflow: hidden;
+  // overflow: hidden;
 
   .btn {
     z-index: 0;
@@ -225,9 +219,9 @@ textarea.myTextArea:active {
     background-color: transparent;
     color: $darkGreen;
     border: 1px solid $darkGreen;
-    box-shadow: none;
-    border-radius: 25px 0 25px 0;
+    border-radius: 0 25px 0 25px;
     overflow: hidden;
+    // box-shadow: none;
     &:hover,
     &:active {
       background-color: $darkGreen;
@@ -272,7 +266,6 @@ textarea.myTextArea:active {
       &.viewBtn {
         color: $darkBlue;
         border: 1px solid $darkBlue;
-        box-shadow: none;
         &:hover {
           color: white;
           background-color: $darkBlue;
@@ -282,7 +275,7 @@ textarea.myTextArea:active {
       &.delBtn {
         color: $danger;
         border: 1px solid $danger;
-        box-shadow: none;
+        // box-shadow: none;
         overflow: hidden;
         &:hover {
           color: white;
