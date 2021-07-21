@@ -239,6 +239,8 @@ textarea.myTextArea:active {
   border: 1px solid #319b38;
   border-radius: 0 25px 0 25px;
   overflow: hidden;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .btnWrap .btn:hover, .btnWrap .btn:active {
@@ -286,6 +288,8 @@ textarea.myTextArea:active {
   top: 1.5rem;
   border-radius: 25px 0 25px 0;
   background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 #showNotesSection .card a.btn.viewBtn {

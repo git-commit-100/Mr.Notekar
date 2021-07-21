@@ -221,7 +221,7 @@ textarea.myTextArea:active {
     border: 1px solid $darkGreen;
     border-radius: 0 25px 0 25px;
     overflow: hidden;
-    // box-shadow: none;
+    box-shadow: none;
     &:hover,
     &:active {
       background-color: $darkGreen;
@@ -263,6 +263,7 @@ textarea.myTextArea:active {
       top: 1.5rem;
       border-radius: 25px 0 25px 0;
       background-color: transparent;
+      box-shadow: none;
       &.viewBtn {
         color: $darkBlue;
         border: 1px solid $darkBlue;
