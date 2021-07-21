@@ -26,6 +26,7 @@ var parentElem = document.getElementById("popup");
 const popupCont = parentElem.querySelector(".popup-content");
 var modalTitle = parentElem.querySelector(".popup-title");
 var modalBody = parentElem.querySelector(".popup-body");
+const noteCountElem = document.querySelector('#noteValue');
 
 //NOTE COUNT
 var noteCount = 0;
@@ -91,6 +92,7 @@ function addNoteToUI(note) {
   </div>
     `;
   showNotesSection.appendChild(htmlofUiNote);
+  noteCountDisplay();
 }
 
 //MODAL OPEN
@@ -139,14 +141,14 @@ function insertIntoModal(title, body) {
   modalBody.textContent = body;
 
   //TRIGGER MODAL
-  modalWrap.style.display = "block";
+  modalWrap.style.display = 'block';
   mainBody.style.overflow = "hidden";
   popupCont.scrollIntoView({ behavior: "smooth" });
 }
 //MODAL CLOSE
 window.onclick = function (e) {
   if (e.target == modalWrap) {
-    modalWrap.style.display = "none";
+    modalWrap.style.display = 'none'
     mainBody.style.overflow = "";
   }
 };
@@ -222,6 +224,7 @@ function insertIntoLocalStorage(note) {
 //REMOVE FROM LOCAL STORAGE
 function removeFromLocalStorage(noteId) {
   const noteArr = getNotes();
+  noteCount = noteCount - 1;
   if (noteArr.length <= 1) {
     //MEANS ONLY 1 NOTE IS PRESENT , WHEN DELETED SHOW NO NOTES
     noNotes.style.display = "";
@@ -230,6 +233,17 @@ function removeFromLocalStorage(noteId) {
     if (note.id == noteId) {
       noteArr.splice(index, 1);
     }
+    noteCountDisplay();
     localStorage.setItem("mrNotekar.notes", JSON.stringify(noteArr));
   });
+}
+
+//NOTE COUNT FUNCTIONALITY
+function noteCountDisplay(){
+  if(noteCount == 0){
+    noteCountElem.style.color = 'red';
+  } else {
+    noteCountElem.style.color = 'green';
+  }
+  noteCountElem.textContent = noteCount;
 }

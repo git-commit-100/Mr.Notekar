@@ -8,10 +8,11 @@ $danger: #ff4b41;
 $light: #fafafa;
 $dark: #212121;
 $transition: all 250ms ease-in-out;
+$transition-long: all 1s ease;
 
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -102,6 +103,13 @@ svg.iconify.prefix.active {
     .card-title {
       font-weight: 500;
       color: $darkBlue;
+    }
+
+    #noteCount{
+      font-size: 12px;
+      border: 1px solid $darkBlue;
+      padding: 1px 1.5rem 1px 1.25rem;
+      border-radius: 8px;
     }
 
     .messageBox {
@@ -304,6 +312,7 @@ textarea.myTextArea:active {
 //custom modal
 .modal-wrap {
   display: none;
+  // visibility: hidden;
   position: fixed;
   top: 0;
   left: 0 !important;
@@ -313,6 +322,7 @@ textarea.myTextArea:active {
   // overflow: auto;
   background-color: rgba($dark, 0.5);
   backdrop-filter: blur(2px);
+  transition: $transition;
   .popup {
     // padding: 1rem;
     background-color: white;
@@ -323,63 +333,64 @@ textarea.myTextArea:active {
     top: 15%;
     left: 10%;
     overflow: auto;
+    // transition: $transition-long;
   }
-  .popup-content{
-  .popup-title {
-    margin: 0;
-    font-size: 30px;
-    padding: 1.5rem 2rem;
-    font-weight: 500;
-    color: rgba($dark,.6);
-  }
+  .popup-content {
+    .popup-title {
+      margin: 0;
+      font-size: 30px;
+      padding: 1.5rem 2rem;
+      font-weight: 500;
+      color: rgba($dark, 0.6);
+    }
     //MODAL CONTENT
-  p {
-    // margin-top: 0.5rem;
-    font-weight: 400;
-    padding: 1rem 2rem;
-    font-size: 20px;
-  }
-  // .popup-footer {
-  //   position: inherit;
-  //   // top: 25%;
-  //   a.close {
-  //     position: relative;
-  //     top: 50%;
-  //     left: 93%;
-  //     @media only screen and (max-width: 1107px) {
-  //       left: 90%;
-  //     }
-  //     @media only screen and (max-width: 770px) {
-  //       left: 87%;
-  //     }
-  //     @media only screen and (max-width: 770px) {
-  //       left: 84%;
-  //     }
-  //     @media only screen and (max-width: 490px) {
-  //       left: 82%;
-  //     }
-  //     @media only screen and (max-width: 490px) {
-  //       left: 80%;
-  //     }
-  //     @media only screen and (max-width: 384px) {
-  //       left: 78% !important;
-  //     }
-  //     @media only screen and (max-width: 344px) {
-  //       left: 75% !important;
-  //     }
-  //     overflow: none;
-  //     text-transform: none;
-  //     background-color: white;
-  //     border: 1px solid $darkBlue;
-  //     &:hover,
-  //     &:active {
-  //       cursor: pointer;
-  //       color: white;
-  //       background-color: $darkBlue;
-  //       transition: $transition;
-  //     }
-  //   }
-  // }
+    p {
+      // margin-top: 0.5rem;
+      font-weight: 400;
+      padding: 1rem 2rem;
+      font-size: 20px;
+    }
+    // .popup-footer {
+    //   position: inherit;
+    //   // top: 25%;
+    //   a.close {
+    //     position: relative;
+    //     top: 50%;
+    //     left: 93%;
+    //     @media only screen and (max-width: 1107px) {
+    //       left: 90%;
+    //     }
+    //     @media only screen and (max-width: 770px) {
+    //       left: 87%;
+    //     }
+    //     @media only screen and (max-width: 770px) {
+    //       left: 84%;
+    //     }
+    //     @media only screen and (max-width: 490px) {
+    //       left: 82%;
+    //     }
+    //     @media only screen and (max-width: 490px) {
+    //       left: 80%;
+    //     }
+    //     @media only screen and (max-width: 384px) {
+    //       left: 78% !important;
+    //     }
+    //     @media only screen and (max-width: 344px) {
+    //       left: 75% !important;
+    //     }
+    //     overflow: none;
+    //     text-transform: none;
+    //     background-color: white;
+    //     border: 1px solid $darkBlue;
+    //     &:hover,
+    //     &:active {
+    //       cursor: pointer;
+    //       color: white;
+    //       background-color: $darkBlue;
+    //       transition: $transition;
+    //     }
+    //   }
+    // }
   }
 }
 

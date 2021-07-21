@@ -102,6 +102,13 @@ svg.iconify.prefix.active {
   color: #0e4470;
 }
 
+#addNotesSection .card.white #noteCount {
+  font-size: 12px;
+  border: 1px solid #0e4470;
+  padding: 1px 1.5rem 1px 1.25rem;
+  border-radius: 8px;
+}
+
 #addNotesSection .card.white .messageBox {
   position: relative;
   left: 20%;
@@ -320,6 +327,8 @@ textarea.myTextArea:active {
   background-color: rgba(33, 33, 33, 0.5);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 .modal-wrap .popup {
