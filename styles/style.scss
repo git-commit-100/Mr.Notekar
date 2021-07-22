@@ -5,6 +5,7 @@ $darkBlue: #0e4470;
 $success: #5fff87;
 $darkGreen: #319b38;
 $danger: #ff4b41;
+$darkred: rgb(173, 2, 2);
 $light: #fafafa;
 $dark: #212121;
 $transition: all 250ms ease-in-out;
@@ -20,6 +21,11 @@ html {
   margin: 0;
   padding: 0;
   font-family: inherit;
+}
+
+body{
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 nav {
@@ -88,8 +94,70 @@ svg.iconify.prefix.active {
   color: $darkBlue;
 }
 
+//alert message
+.alertMsgWrap {
+  display: none;
+  position: absolute;
+  right: 0 !important;
+  z-index: 998;
+  width: 100vw;
+  .alertMsg {
+    border-radius: 8px 8px;
+    .alertMsgContent {
+      font-size: 1rem;
+      margin-left: -1rem;
+      .iconify.status {
+        font-size: 18px;
+      }
+    }
+    &.success-msg{
+      background-color: rgba($success,1);
+      color: black;
+      border-left: 8px $darkGreen solid;
+    }
+  
+    &.noteAdd-msg{
+      background-color: rgba($primary,1);
+      color: black;
+      border-left: 8px $darkBlue solid;
+    }
+  
+    &.delete-msg{
+      background-color: rgba($danger,1);
+      color: black;
+      border-left: 8px $darkred solid;
+    }
+  }
+}
+
+// @media only screen and (max-width: 405px) {
+//   .iconify.cancel{
+//     display: none;
+//   }
+
+.alertMsgWrap.show{
+  display: block;
+  animation: show_slide 1s ease-in-out forwards;
+}
+
+@keyframes show_slide {
+  0%{
+    transform: translateX(100%);
+  }
+  40%{
+    transform: translateX(-5%);
+  }
+  80%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+
 #addNotesSection {
   .card.white {
+    z-index: 1;
     margin-top: -3rem;
     height: fit-content;
     padding: 0 0 3rem;
@@ -105,7 +173,7 @@ svg.iconify.prefix.active {
       color: $darkBlue;
     }
 
-    #noteCount{
+    #noteCount {
       border: 1px solid $darkBlue;
       padding: 1px 1.5rem 1px 1.25rem;
       border-radius: 8px;

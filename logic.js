@@ -26,7 +26,10 @@ var parentElem = document.getElementById("popup");
 const popupCont = parentElem.querySelector(".popup-content");
 var modalTitle = parentElem.querySelector(".popup-title");
 var modalBody = parentElem.querySelector(".popup-body");
-const noteCountElem = document.querySelector('#noteValue');
+const noteCountElem = document.querySelector("#noteValue");
+const alertMsgWrap = document.querySelector(".alertMsgWrap");
+const alertMsg = alertMsgWrap.querySelector('.alertMsg')
+const alertMsgText = alertMsgWrap.querySelector(".alertMsgText");
 
 //NOTE COUNT
 var noteCount = 0;
@@ -59,13 +62,15 @@ takeNote.addEventListener("click", function () {
     noteTitle.value = "";
     noteContent.value = "";
     noteTitle.focus();
-    showAlertMsg("Your Note was Added", "success-msg");
+    showAlertMsg("Your Note was Added !", "success-msg");
   } else if (noteTitle.value.length <= 0) {
+    alertMsgText.textContent = "Add a Note Title !";
     noteTitle.focus();
-    showAlertMsg("Please Add a Note Title", "noteAdd-msg");
+    showAlertMsg("Add a Note Title !", "noteAdd-msg");
   } else if (noteContent.value.length <= 0) {
     noteContent.focus();
-    showAlertMsg("Please Add Note Content", "noteAdd-msg");
+    alertMsgText.textContent = "Add Note Content !";
+    showAlertMsg("Add Note Content !", "noteAdd-msg");
   }
 });
 
@@ -141,21 +146,21 @@ function insertIntoModal(title, body) {
   modalBody.textContent = body;
 
   //TRIGGER MODAL
-  modalWrap.style.display = 'block';
+  modalWrap.style.display = "block";
   mainBody.style.overflow = "hidden";
   popupCont.scrollIntoView({ behavior: "smooth" });
 }
 //MODAL CLOSE
 window.onclick = function (e) {
   if (e.target == modalWrap) {
-    modalWrap.style.display = 'none'
+    modalWrap.style.display = "none";
     mainBody.style.overflow = "";
   }
 };
 
 //PREVENT MULTIPLE CALLING OF FUNCTIONS
 var lastClick = 0;
-var delay = 500;
+var delay = 20;
 function executeOnce() {
   if (lastClick >= Date.now() - delay) {
     return;
@@ -164,25 +169,6 @@ function executeOnce() {
 
   //CALLING FUNCTION
   showAlertMsg("Your Note was deleted", "delete-msg");
-}
-
-//ALERT MESSAGE
-function showAlertMsg(msg, msgClass) {
-  messageBox.style.display = "block";
-  const msgDiv = document.createElement("div");
-  msgDiv.className = "messageBody";
-  msgDiv.classList.add("center");
-  msgDiv.classList.add(msgClass);
-
-  msgDiv.appendChild(document.createTextNode(msg));
-
-  messageBox.appendChild(msgDiv);
-
-  //TIMEOUT FOR MSGDIV
-  setTimeout(function () {
-    msgDiv.remove();
-    messageBox.style.display = "none";
-  }, 2000);
   window.scrollTo(0, 0);
 }
 
@@ -239,11 +225,24 @@ function removeFromLocalStorage(noteId) {
 }
 
 //NOTE COUNT FUNCTIONALITY
-function noteCountDisplay(){
-  if(noteCount == 0){
-    noteCountElem.style.color = 'red';
+function noteCountDisplay() {
+  if (noteCount == 0) {
+    noteCountElem.style.color = "red";
   } else {
-    noteCountElem.style.color = 'green';
+    noteCountElem.style.color = "green";
   }
   noteCountElem.textContent = noteCount;
+}
+
+//ALERT MSG DIV
+function showAlertMsg(msg, msgClass) {
+  alertMsgText.textContent = msg;
+  alertMsgWrap.classList.add('show')
+  alertMsg.classList.add(msgClass);
+  //TIMEOUT FOR MSGDIV
+  setTimeout(function () {
+    alertMsg.classList.remove(msgClass);
+    alertMsgWrap.classList.remove('show');
+  }, 2000);
+  window.scrollTo(0, 0);
 }

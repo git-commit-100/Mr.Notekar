@@ -9,6 +9,11 @@ html {
   font-family: inherit;
 }
 
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 nav {
   height: 4rem !important;
 }
@@ -76,12 +81,96 @@ svg.iconify.prefix.active {
   color: #0e4470;
 }
 
+.alertMsgWrap {
+  display: none;
+  position: absolute;
+  right: 0 !important;
+  z-index: 998;
+  width: 100vw;
+}
+
+.alertMsgWrap .alertMsg {
+  border-radius: 8px 8px;
+}
+
+.alertMsgWrap .alertMsg .alertMsgContent {
+  font-size: 1rem;
+  margin-left: -1rem;
+}
+
+.alertMsgWrap .alertMsg .alertMsgContent .iconify.status {
+  font-size: 18px;
+}
+
+.alertMsgWrap .alertMsg.success-msg {
+  background-color: #5fff87;
+  color: black;
+  border-left: 8px #319b38 solid;
+}
+
+.alertMsgWrap .alertMsg.noteAdd-msg {
+  background-color: #a1d5ff;
+  color: black;
+  border-left: 8px #0e4470 solid;
+}
+
+.alertMsgWrap .alertMsg.delete-msg {
+  background-color: #ff4b41;
+  color: black;
+  border-left: 8px #ad0202 solid;
+}
+
+.alertMsgWrap.show {
+  display: block;
+  -webkit-animation: show_slide 1s ease-in-out forwards;
+          animation: show_slide 1s ease-in-out forwards;
+}
+
+@-webkit-keyframes show_slide {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  40% {
+    -webkit-transform: translateX(-5%);
+            transform: translateX(-5%);
+  }
+  80% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes show_slide {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  40% {
+    -webkit-transform: translateX(-5%);
+            transform: translateX(-5%);
+  }
+  80% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
 #addNotesSection {
   /* label focus color */
   /* label underline focus color */
 }
 
 #addNotesSection .card.white {
+  z-index: 1;
   margin-top: -3rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
