@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 * {
@@ -15,7 +15,11 @@ body {
 }
 
 nav {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0;
   height: 4rem !important;
+  z-index: 2;
 }
 
 nav a.brand-logo {
@@ -83,9 +87,8 @@ svg.iconify.prefix.active {
 
 .alertMsgWrap {
   display: none;
-  position: absolute;
+  z-index: 99;
   right: 0 !important;
-  z-index: 998;
   width: 100vw;
 }
 
@@ -170,7 +173,6 @@ svg.iconify.prefix.active {
 }
 
 #addNotesSection .card.white {
-  z-index: 1;
   margin-top: -3rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -187,6 +189,8 @@ svg.iconify.prefix.active {
 }
 
 #addNotesSection .card.white .card-title {
+  padding-top: 0;
+  margin-top: 0 !important;
   font-weight: 500;
   color: #0e4470;
 }
@@ -200,62 +204,6 @@ svg.iconify.prefix.active {
           box-shadow: 2px 2px rgba(14, 68, 112, 0.8);
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
-}
-
-#addNotesSection .card.white .messageBox {
-  position: relative;
-  left: 20%;
-  margin: 0.5rem 0;
-  height: 20%;
-  width: 60%;
-  display: none;
-}
-
-#addNotesSection .card.white .messageBox .noteAdd-msg {
-  padding: 0.5rem;
-  position: relative;
-  background-color: #a1d5ff;
-  color: black;
-  width: 100%;
-}
-
-#addNotesSection .card.white .messageBox .success-msg {
-  padding: 0.5rem;
-  position: relative;
-  background-color: #319b38;
-  color: white;
-  width: 100%;
-}
-
-#addNotesSection .card.white .messageBox .delete-msg {
-  padding: 0.5rem;
-  position: relative;
-  background-color: #ff4b41;
-  color: white;
-  width: 100%;
-}
-
-#addNotesSection .card.white .message {
-  overflow: hidden;
-  position: relative;
-  left: 35%;
-  right: inherit;
-}
-
-@media only screen and (max-width: 1102px) {
-  #addNotesSection .card.white .message {
-    position: relative;
-    left: 30%;
-    right: inherit;
-  }
-}
-
-@media only screen and (max-width: 489px) {
-  #addNotesSection .card.white .message {
-    position: relative;
-    left: 5%;
-    right: inherit;
-  }
 }
 
 #addNotesSection .input-field input[type="text"]:focus + label {
@@ -411,7 +359,7 @@ textarea.myTextArea:active {
   position: fixed;
   top: 0;
   left: 0 !important;
-  z-index: 1;
+  z-index: 9;
   height: 100vh;
   width: 100vw;
   background-color: rgba(33, 33, 33, 0.5);
@@ -488,5 +436,25 @@ textarea.myTextArea:active {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 0 -8rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 1rem;
+  height: 100%;
 }
 /*# sourceMappingURL=style.css.map */

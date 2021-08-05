@@ -1,15 +1,23 @@
 // console.log('Js file');
 
+
 //LOADING GIF
 const loadingGif = document.querySelector(".loaderGif");
 window.addEventListener("load", function () {
   this.setTimeout(removeLoading, 2000);
 });
 
-window.onbeforeunload = function scrollBodyTop() {
-  //SCROLL TO TOP ON REFRESH
-  window.scrollTo(0, -1);
-};
+function scrollBodyTop() {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+}
+
+//ON REFRESH , PAGE GOES TO TOP
+document.addEventListener("DOMContentLoaded", scrollBodyTop);
+
 
 function removeLoading() {
   loadingGif.classList.add("hidden");
@@ -19,6 +27,7 @@ function removeLoading() {
 const mainBody = document.querySelector("body");
 const showNotesSection = document.getElementById("showNotesSection");
 const noteTitle = document.getElementById("noteTitle");
+const noteContent = document.getElementById("noteContent");
 const messageBox = document.getElementsByClassName("messageBox")[0];
 var modalWrap = document.querySelector(".modal-wrap");
 const noNotes = document.getElementById("noNotes");
@@ -28,7 +37,7 @@ var modalTitle = parentElem.querySelector(".popup-title");
 var modalBody = parentElem.querySelector(".popup-body");
 const noteCountElem = document.querySelector("#noteValue");
 const alertMsgWrap = document.querySelector(".alertMsgWrap");
-const alertMsg = alertMsgWrap.querySelector('.alertMsg')
+const alertMsg = alertMsgWrap.querySelector(".alertMsg");
 const alertMsgText = alertMsgWrap.querySelector(".alertMsgText");
 
 //NOTE COUNT
@@ -46,8 +55,8 @@ class Note {
 
 //TAKE NOTE AS INPUT
 let takeNote = document.getElementById("takeNote");
-takeNote.addEventListener("click", function () {
-  const noteContent = document.getElementById("noteContent");
+takeNote.addEventListener("click", function (e) {
+  e.preventDefault();
 
   //VALIDATE NOTES
   if (noteTitle.value.length > 0 && noteContent.value.length > 0) {
@@ -61,16 +70,14 @@ takeNote.addEventListener("click", function () {
     //CLEARING INPUT FIELD ON SUBMIT
     noteTitle.value = "";
     noteContent.value = "";
-    noteTitle.focus();
     showAlertMsg("Your Note was Added !", "success-msg");
-  } else if (noteTitle.value.length <= 0) {
-    alertMsgText.textContent = "Add a Note Title !";
     noteTitle.focus();
+  } else if (noteTitle.value.length <= 0) {
     showAlertMsg("Add a Note Title !", "noteAdd-msg");
+    noteTitle.focus();
   } else if (noteContent.value.length <= 0) {
-    noteContent.focus();
-    alertMsgText.textContent = "Add Note Content !";
     showAlertMsg("Add Note Content !", "noteAdd-msg");
+    noteContent.focus();
   }
 });
 
@@ -133,9 +140,10 @@ showNotesSection.addEventListener("click", function (e) {
       "Are you sure you want to delete note with title " + currentTitle + " ?"
     );
     if (wantToDel) {
+      scrollBodyTop();
       removeFromLocalStorage(Number(currentNoteId));
       currentNote.remove();
-      executeOnce();
+      showAlertMsg("Your Note was deleted", "delete-msg");
     }
   }
 });
@@ -159,18 +167,17 @@ window.onclick = function (e) {
 };
 
 //PREVENT MULTIPLE CALLING OF FUNCTIONS
-var lastClick = 0;
-var delay = 20;
-function executeOnce() {
-  if (lastClick >= Date.now() - delay) {
-    return;
-  }
-  lastClick = Date.now();
+// var lastClick = 0;
+// var delay = 20;
+// function executeOnce() {
+//   if (lastClick >= Date.now() - delay) {
+//     return;
+//   }
+//   lastClick = Date.now();
 
-  //CALLING FUNCTION
-  showAlertMsg("Your Note was deleted", "delete-msg");
-  window.scrollTo(0, 0);
-}
+//   //CALLING FUNCTION
+//   // showAlertMsg("Your Note was deleted", "delete-msg");
+// }
 
 //GET NOTES FROM LOCAL STORAGE
 function getNotes() {
@@ -236,13 +243,13 @@ function noteCountDisplay() {
 
 //ALERT MSG DIV
 function showAlertMsg(msg, msgClass) {
+  scrollBodyTop();
   alertMsgText.textContent = msg;
-  alertMsgWrap.classList.add('show')
+  alertMsgWrap.classList.add("show");
   alertMsg.classList.add(msgClass);
   //TIMEOUT FOR MSGDIV
   setTimeout(function () {
     alertMsg.classList.remove(msgClass);
-    alertMsgWrap.classList.remove('show');
+    alertMsgWrap.classList.remove("show");
   }, 2000);
-  window.scrollTo(0, 0);
 }
