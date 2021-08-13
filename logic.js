@@ -237,7 +237,7 @@ function noteCountDisplay() {
 //ALERT MSG DIV
 function showAlertMsg(msg, msgClass) {
   alertMsgText.textContent = msg;
-  alertMsgWrap.classList.add('show')
+  alertMsgWrap.classList.add('show');
   alertMsg.classList.add(msgClass);
   //TIMEOUT FOR MSGDIV
   setTimeout(function () {
