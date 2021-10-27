@@ -94,7 +94,10 @@
   <div class="container row" id="addNotesSection">
     <div class="col s12 m12 l12 card white">
       <div class="card-content">
-        <span class="card-title center">Add Your Notes Here !</span>
+        <span class="card-title center">Add Your 
+          <span class="typer" id="main" data-words="Notes !,Memories !, Groceries !" data-delay="100" data-deleteDelay="1000"></span>
+          <span class="cursor" data-owner="main"></span>
+        </span>
 
         <!-- notesCount -->
         <div class="card-title right">
@@ -156,6 +159,7 @@
       var instances = M.Sidenav.init(elems);
     });
   </script>
+  <script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
 </body>
 
 </html>
